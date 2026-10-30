@@ -8046,7 +8046,7 @@ function addMusicFiles(event) {
   files.forEach(file => {
     const url = URL.createObjectURL(file);
     musicObjectUrls.push(url);
-    musicPlaylist.push({ name: file.name.replace(/\\.[^/.]+$/, ""), fileName: file.name, url });
+    musicPlaylist.push({ name: file.name.replace(/\.[^/.]+$/, ""), fileName: file.name, url });
   });
   renderMusicPlaylist();
   if (musicCurrentIndex < 0) playMusicTrack(0, false);
@@ -8054,6 +8054,27 @@ function addMusicFiles(event) {
   showToast(files.length + " media file(s) added", "fa-compact-disc");
 }
 function loadMusicFile(event) { addMusicFiles(event); }
+function addDroppedMusicFiles(files) {
+  const input = document.getElementById("vlcFileInput");
+  if (!input || !files || !files.length) return;
+  try {
+    const transfer = new DataTransfer();
+    Array.from(files).forEach(file => transfer.items.add(file));
+    input.files = transfer.files;
+    addMusicFiles({ target: input });
+  } catch (error) {
+    showToast("Use Open Files to add media on this browser", "fa-circle-info");
+  }
+}
+document.addEventListener("dragover", event => {
+  if (event.target.closest && event.target.closest("#vlcPlayer")) event.preventDefault();
+});
+document.addEventListener("drop", event => {
+  if (event.target.closest && event.target.closest("#vlcPlayer")) {
+    event.preventDefault();
+    addDroppedMusicFiles(event.dataTransfer && event.dataTransfer.files);
+  }
+});
 function escapeMusicText(value) {
   return String(value).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" })[c]);
 }
