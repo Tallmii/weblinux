@@ -7331,7 +7331,7 @@ select {
 }
 
 /* Web Linux AI Illustration */
-.illustration-nautilus-ai {
+.illustration-web-linux-ai {
     width: 260px;
     height: 160px;
     background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
@@ -7342,7 +7342,7 @@ select {
     overflow: hidden;
 }
 
-.illustration-nautilus-ai-header {
+.illustration-web-linux-ai-header {
     height: 35px;
     background: rgba(15, 23, 42, 0.9);
     border-bottom: 1px solid rgba(125, 211, 192, 0.3);
@@ -7352,18 +7352,18 @@ select {
     gap: 0.5rem;
 }
 
-.illustration-nautilus-ai-icon {
+.illustration-web-linux-ai-icon {
     font-size: 14px;
     color: var(--accent);
 }
 
-.illustration-nautilus-ai-title {
+.illustration-web-linux-ai-title {
     font-size: 10px;
     color: var(--accent);
     font-family: fontb;
 }
 
-.illustration-nautilus-ai-content {
+.illustration-web-linux-ai-content {
     flex: 1;
     padding: 0.75rem;
     display: flex;
@@ -7371,7 +7371,7 @@ select {
     gap: 0.5rem;
 }
 
-.illustration-nautilus-ai-msg-ai {
+.illustration-web-linux-ai-msg-ai {
     background: rgba(125, 211, 192, 0.1);
     border: 1px solid rgba(125, 211, 192, 0.3);
     border-radius: 8px 8px 8px 0;
@@ -7380,14 +7380,14 @@ select {
     align-self: flex-start;
 }
 
-.illustration-nautilus-ai-line {
+.illustration-web-linux-ai-line {
     height: 4px;
     background: rgba(125, 211, 192, 0.4);
     border-radius: 2px;
     margin-bottom: 3px;
 }
 
-.illustration-nautilus-ai-msg-user {
+.illustration-web-linux-ai-msg-user {
     background: rgba(30, 41, 59, 0.8);
     border: 1px solid rgba(148, 163, 184, 0.3);
     border-radius: 8px 8px 0 8px;
