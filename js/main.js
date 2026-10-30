@@ -113,7 +113,7 @@
           font-weight: bold;
         }
       </style>
-      <div class="bios-header">NautilusOS BIOS Setup Utility v1.0</div>
+      <div class="bios-header">Web Linux BIOS Setup Utility v1.0</div>
       
       <div style="display: flex; gap: 20px;">
         <div style="flex: 1;">
@@ -121,7 +121,7 @@
             <div class="bios-section-title">System Information</div>
             <div class="bios-row">
               <span class="bios-label">OS Version:</span>
-              <span class="bios-value">NautilusOS 1.5</span>
+              <span class="bios-value">Web Linux 2.0</span>
             </div>
             <div class="bios-row">
               <span class="bios-label">Browser:</span>
@@ -208,7 +208,7 @@
       <div class="bios-footer">
         <span><i class="fa fa-mouse-pointer"></i>
  Navigate | Enter Select | ESC Exit</span>
-        <span>NautilusOS BIOS ${new Date().toLocaleString()}</span>
+        <span>Web Linux BIOS ${new Date().toLocaleString()}</span>
       </div>
     `;
 
@@ -251,7 +251,7 @@
   };
 
   window.biosResetAll = function () {
-    if (confirm('Are you sure you want to reset all NautilusOS settings? This cannot be undone.')) {
+    if (confirm('Are you sure you want to reset all Web Linux settings? This cannot be undone.')) {
       const keys = Object.keys(localStorage).filter(k => k.startsWith('nautilusOS_'));
       keys.forEach(k => localStorage.removeItem(k));
       alert('Settings reset. The system will now reload.');
@@ -260,7 +260,7 @@
   };
 
   window.biosClearData = function () {
-    if (confirm('WARNING: This will delete ALL NautilusOS data including files, settings, and accounts. Continue?')) {
+    if (confirm('WARNING: This will delete ALL Web Linux data including files, settings, and accounts. Continue?')) {
       if (confirm('Are you ABSOLUTELY sure? This cannot be undone!')) {
         localStorage.clear();
         sessionStorage.clear();
@@ -691,7 +691,7 @@ let fileSystem = {
   Photos: {},
   TextEditor: {
     "example.txt":
-      "This is an example text file.\n\nYou can edit this file using the Text Editor app.\n\nTry creating your own files by:\n1. Opening the Text Editor\n2. Writing your content\n3. Clicking Save As and entering a filename\n\nHave fun exploring NautilusOS!",
+      "This is an example text file.\n\nYou can edit this file using the Text Editor app.\n\nTry creating your own files by:\n1. Opening the Text Editor\n2. Writing your content\n3. Clicking Save As and entering a filename\n\nHave fun exploring Web Linux!",
   },
 };
 async function saveFS(fs) {
@@ -898,7 +898,7 @@ function checkFileProtocol(title = null) {
       title === "Visual Studio Code"
     );
     if (shouldShowToast && !hasShownFileProtocolToast) {
-      showToast("This feature doesn't work on file:// protocol. Please run NautilusOS from a web server.", "fa-exclamation-triangle");
+      showToast("This feature doesn't work on file:// protocol. Please run Web Linux from a web server.", "fa-exclamation-triangle");
       hasShownFileProtocolToast = true;
     }
     return false;
@@ -974,7 +974,7 @@ const appMetadata = {
   whatsnew: { name: "What's New", icon: "fa-star", preinstalled: true },
   appstore: { name: "App Store", icon: "fa-store", preinstalled: true },
   calculator: { name: "Calculator", icon: "fa-calculator", preinstalled: true },
-  browser: { name: "Nautilus Browser", icon: "fa-globe", preinstalled: true },
+  browser: { name: "Web Linux Browser", icon: "fa-globe", preinstalled: true },
   cloaking: { name: "Cloaking", icon: "fa-mask", preinstalled: true },
   achievements: { name: "Achievements", icon: "fa-trophy", preinstalled: true },
   python: { name: "Python Interpreter", icon: "fa-code", preinstalled: true },
@@ -1019,12 +1019,12 @@ const appMetadata = {
     preinstalled: true,
   },
   "nautilus-ai": {
-    name: "Nautilus AI Assistant",
+    name: "Web Linux AI Assistant",
     icon: "fa-robot",
     preinstalled: true,
   },
   "about": {
-    name: "About NautilusOS",
+    name: "About Web Linux",
     icon: "fa-info-circle",
     preinstalled: true,
   },
@@ -2040,7 +2040,7 @@ function startBootSequence() {
 
   if (bootSelectedIndex === 1) {
     messages = [
-      "Starting boot sequence for NautilusOS (Command Line)...",
+      "Starting boot sequence for Web Linux (Command Line)...",
       "Initializing command-line interface...",
       "Loading system utilities...",
       "- bash shell v5.1",
@@ -2052,7 +2052,7 @@ function startBootSequence() {
     ];
   } else {
     messages = [
-      "Starting boot sequence for NautilusOS...",
+      "Starting boot sequence for Web Linux...",
       "Running startup functions...",
       "- startLoginClock()",
       "- updateLoginClock()",
@@ -2162,7 +2162,7 @@ function handleCLIInput(e) {
 
     const cmdLine = document.createElement("div");
     cmdLine.className = "cli-line";
-    cmdLine.innerHTML = `<span class="cli-prompt">user@nautilusos:~$ </span>${command}`;
+    cmdLine.innerHTML = `<span class="cli-prompt">user@web-linux:~$ </span>${command}`;
     terminal.insertBefore(cmdLine, terminal.lastElementChild);
 
     const output = document.createElement("div");
@@ -2222,7 +2222,7 @@ function handleCLIInput(e) {
         "The bootloader menu will appear on next page reload.";
     } else if (command === "clear") {
       terminal.innerHTML = `
-                      <div class="cli-line" style="color: var(--accent);">NautilusOS Command Line Interface v1.5</div>
+                      <div class="cli-line" style="color: var(--accent);">Web Linux Command Line Interface v2.0</div>
                       <div class="cli-line" style="color: #888; margin-bottom: 1rem;">Type 'help' for available commands, 'gui' to switch to graphical mode</div>
                   `;
     } else if (command === "date") {
@@ -3498,10 +3498,10 @@ function openApp(appName, editorContent = "", filename = "") {
       icon: "fas fa-terminal",
       content: `
               <div class="terminal" id="terminalContent">
-                  <div class="terminal-line" style="color: var(--accent);">NautilusOS Terminal v1.5</div>
+                  <div class="terminal-line" style="color: var(--accent);">Web Linux Terminal v2.0</div>
                   <div class="terminal-line" style="color: #888; margin-bottom: 1rem;">Type 'help' for available commands</div>
                   <div class="terminal-line">
-                      <span class="terminal-prompt">user@nautilusos:~$ </span><input type="text" class="terminal-input" id="terminalInput" onkeypress="handleTerminalInput(event)">
+                      <span class="terminal-prompt">user@web-linux:~$ </span><input type="text" class="terminal-input" id="terminalInput" onkeypress="handleTerminalInput(event)">
                   </div>
               </div>
           `,
@@ -3546,15 +3546,15 @@ function openApp(appName, editorContent = "", filename = "") {
       height: 600,
     },
     browser: {
-      title: "Nautilus Browser",
+      title: "Web Linux Browser",
       icon: "fas fa-globe",
       content: (() => {
-        if (!checkFileProtocol("Nautilus Browser")) {
+        if (!checkFileProtocol("Web Linux Browser")) {
           return `
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 3rem; background: rgba(10, 14, 26, 0.8);">
               <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color: var(--error-red); margin-bottom: 2rem;"></i>
               <h2 style="margin-bottom: 1rem; color: var(--text-primary);">Browser Unavailable</h2>
-              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">The browser doesn't work on file:// protocol. Please run NautilusOS from a web server to use this feature.</p>
+              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">The browser doesn't work on file:// protocol. Please run Web Linux from a web server to use this feature.</p>
             </div>
           `;
         }
@@ -3672,7 +3672,7 @@ function openApp(appName, editorContent = "", filename = "") {
 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='75' font-size=85' fill='white'%3E🌐︎%3C/text%3E%3C/svg%3E"
 alt="favicon">
 
-                            <span class="cloaking-preview-title" id="previewTitle">NautilusOS</span>
+                            <span class="cloaking-preview-title" id="previewTitle">Web Linux</span>
                         </div>
                     </div>
                     
@@ -3732,7 +3732,7 @@ alt="favicon">
                             <img class="cloaking-preview-favicon" id="clickoffPreviewFavicon"
                                 src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='75' font-size='85' fill='white'%3E🌐︎%3C/text%3E%3C/svg%3E"
                                 alt="favicon">
-                            <span class="cloaking-preview-title" id="clickoffPreviewTitle">NautilusOS</span>
+                            <span class="cloaking-preview-title" id="clickoffPreviewTitle">Web Linux</span>
                         </div>
                     </div>
 
@@ -3985,7 +3985,7 @@ alt="favicon">
                             </div>
                             <div class="cloaking-status-text">
                                 <div class="cloaking-status-title">Screen Monitoring Detection</div>
-                                <div class="cloaking-status-desc">${cloakingConfig.antiScreenMonitoring ? "Enabled - NautilusOS will black out when you switch tabs, preventing monitering software from viewing Nautilus" : "Disabled"}</div>
+                                <div class="cloaking-status-desc">${cloakingConfig.antiScreenMonitoring ? "Enabled - Web Linux will black out when you switch tabs, preventing monitering software from viewing Nautilus" : "Disabled"}</div>
                             </div>
                             <div class="toggle-switch ${cloakingConfig.antiScreenMonitoring ? "active" : ""}" id="antiScreenMonitoringToggle" onclick="toggleAntiScreenMonitoring()"></div>
                         </div>
@@ -4022,7 +4022,7 @@ alt="favicon">
                                 >
                                 <span class="cloaking-slider-value" id="antiMonitorDelayValue">${cloakingConfig.antiMonitorDelay}ms</span>
                             </div>
-                            <div class="cloaking-hint">How long NautilusOS stays blacked out after you switch back to this tab (delays unblacking.) Helpful if you cycle through tabs</div>
+                            <div class="cloaking-hint">How long Web Linux stays blacked out after you switch back to this tab (delays unblacking.) Helpful if you cycle through tabs</div>
                         </div>
                     </div>
                     
@@ -4371,7 +4371,7 @@ alt="favicon">
                                 <div class="settings-empty">
                                     <i class="fas fa-paint-brush"></i>
                                     <h3>No Themes Installed</h3>
-                                    <p>Visit the App Store to browse and install custom themes for NautilusOS.</p>
+                                    <p>Visit the App Store to browse and install custom themes for Web Linux.</p>
                                     <button class="settings-action-btn" onclick="hideContextMenu(); openApp('appstore'); setTimeout(() => { const themesBtn = document.querySelector('.appstore-section:nth-child(2)'); if(themesBtn) switchAppStoreSection('themes', themesBtn); }, 100);">
                                         <i class="fas fa-store"></i> Open App Store
                                     </button>
@@ -4589,7 +4589,7 @@ alt="favicon">
                                 <div class="settings-item-title">Bypass File Protocol Warnings</div>
                                 <div class="settings-item-desc">
                                     Allow experimental browser features on file:// protocol. By enabling this, you agree to report any bugs as GitHub issues.
-                                    <a href="https://github.com/nautilus-os/NautilusOS/issues" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">Report issues here</a>
+                                    <a href="https://github.com/nautilus-os/Web Linux/issues" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">Report issues here</a>
                                 </div>
                             </div>
                             <div class="toggle-switch ${settings.bypassFileProtocolWarnings ? "active" : ""
@@ -4743,7 +4743,7 @@ alt="favicon">
       content: (() => {
         // Base (static) help topics we always want present
         const baseTopics = [
-          { id: 'welcome', icon: 'fa-info-circle', title: 'Welcome', preview: 'Introduction to NautilusOS' },
+          { id: 'welcome', icon: 'fa-info-circle', title: 'Welcome', preview: 'Introduction to Web Linux' },
           { id: 'cloaking', icon: 'fa-mask', title: 'Cloaking', preview: 'Tab disguise features' },
           { id: 'boot', icon: 'fa-power-off', title: 'Boot Options', preview: 'Graphical vs command-line' },
           { id: 'apps', icon: 'fa-th', title: 'Applications', preview: 'Built-in apps guide' },
@@ -4809,13 +4809,13 @@ alt="favicon">
       height: 600,
     },
     whatsnew: {
-      title: "What's New in NautilusOS",
+      title: "What's New in Web Linux",
       icon: "fas fa-star",
       content: `
               <div class="whats-new-content">
                   <center>
                   <div class="whats-new-header">
-                      <h1 style="text-align: center !important; font-size: 2rem; margin-bottom: 0.5rem; line-height: 1.2;">Welcome to NautilusOS <br>v1.5! What's new?</h1>
+                      <h1 style="text-align: center !important; font-size: 2rem; margin-bottom: 0.5rem; line-height: 1.2;">Welcome to Web Linux <br>v2.0! What's new?</h1>
                       <p>AI Assistant, 3 Browsers, More Themes, VS Code, Window Snapping, Games, and more!</p>
                   </div>
                   </center>
@@ -4859,7 +4859,7 @@ alt="favicon">
                           </div>
                           <div class="carousel-content">
                               <h2>Multiple Boot Options</h2>
-                              <p>Choose between graphical mode or command-line interface on startup. Your preference is remembered, giving you full control over your NautilusOS experience.</p>
+                              <p>Choose between graphical mode or command-line interface on startup. Your preference is remembered, giving you full control over your Web Linux experience.</p>
                           </div>
                       </div>
 
@@ -4939,7 +4939,7 @@ alt="favicon">
                           </div>
                           <div class="carousel-content">
                               <h2>Built-in App Store</h2>
-                              <p>Discover and install new applications from the NautilusOS App Store. Browse featured themes, apps, and tools to extend your desktop experience with just a click!</p>
+                              <p>Discover and install new applications from the Web Linux App Store. Browse featured themes, apps, and tools to extend your desktop experience with just a click!</p>
                           </div>
                       </div>
 
@@ -4953,7 +4953,7 @@ alt="favicon">
                           </div>
                           <div class="carousel-content">
                               <h2>Fully Customizable</h2>
-                              <p>Personalize your experience with extensive settings. Make NautilusOS truly yours by installing different themes, changing cloaking settings, arranging desktop icons, configuring boot preferences, and more.</p>
+                              <p>Personalize your experience with extensive settings. Make Web Linux truly yours by installing different themes, changing cloaking settings, arranging desktop icons, configuring boot preferences, and more.</p>
                           </div>
                       </div>
 
@@ -5006,7 +5006,7 @@ alt="favicon">
                           </div>
                           <div class="carousel-content">
                               <h2>Built-in Web Browser</h2>
-                              <p>Browse the web without leaving NautilusOS! Full-featured browser with multiple tabs, navigation controls, and URL bar. Visit your favorite websites right from your virtual desktop.</p>
+                              <p>Browse the web without leaving Web Linux! Full-featured browser with multiple tabs, navigation controls, and URL bar. Visit your favorite websites right from your virtual desktop.</p>
                           </div>
                       </div>
 
@@ -5050,7 +5050,7 @@ alt="favicon">
     </div>
     <div class="carousel-content">
         <h2>Import & Export Profiles</h2>
-        <p>Backup your entire NautilusOS experience! Export your profile to save settings, files, apps, and themes. Import profiles to restore your setup on any device or share configurations with others.</p>
+        <p>Backup your entire Web Linux experience! Export your profile to save settings, files, apps, and themes. Import profiles to restore your setup on any device or share configurations with others.</p>
     </div>
 </div>
 
@@ -5069,7 +5069,7 @@ alt="favicon">
           </div>
           <div class="carousel-content">
               <h2>Notification Center</h2>
-              <p>Never miss important system messages! View all your notifications in one place, track their history, and clear them when you're done. Stay informed about everything happening in NautilusOS.</p>
+              <p>Never miss important system messages! View all your notifications in one place, track their history, and clear them when you're done. Stay informed about everything happening in Web Linux.</p>
           </div>
       </div>
 
@@ -5111,7 +5111,7 @@ alt="favicon">
     </div>
     <div class="carousel-content">
         <h2>Personalization & Wallpapers</h2>
-        <p>Make NautilusOS truly yours! Upload custom wallpapers for both desktop and login screen, set a profile picture to personalize your account, and choose whether to use the same background everywhere or different ones for each screen.</p>
+        <p>Make Web Linux truly yours! Upload custom wallpapers for both desktop and login screen, set a profile picture to personalize your account, and choose whether to use the same background everywhere or different ones for each screen.</p>
     </div>
 </div>
 <div class="carousel-slide" data-slide="15">
@@ -5138,7 +5138,7 @@ alt="favicon">
     </div>
 </div>
 
-<!-- v1.5 New Features -->
+<!-- v2.0 New Features -->
 <div class="carousel-slide" data-slide="16">
     <div class="carousel-illustration">
         <div style="display: flex; flex-direction: column; align-items: center; gap: 1rem;">
@@ -5153,8 +5153,8 @@ alt="favicon">
         </div>
     </div>
     <div class="carousel-content">
-        <h2>Nautilus AI Assistant</h2>
-        <p>Meet your new intelligent companion! The Nautilus AI Assistant helps you with tasks, answers questions, and makes your NautilusOS experience smarter. Powered by advanced AI technology right in your browser.</p>
+        <h2>Web Linux AI Assistant</h2>
+        <p>Meet your new intelligent companion! The Web Linux AI Assistant helps you with tasks, answers questions, and makes your Web Linux experience smarter. Powered by advanced AI technology right in your browser.</p>
     </div>
 </div>
 
@@ -5174,7 +5174,7 @@ alt="favicon">
     </div>
     <div class="carousel-content">
         <h2>3 Browser Options</h2>
-        <p>Choose your browsing experience! Nautilus Browser for quick access, Helios Browser for a premium experience, and UV for advanced unblocking. Each browser offers unique features tailored to your needs.</p>
+        <p>Choose your browsing experience! Web Linux Browser for quick access, Helios Browser for a premium experience, and UV for advanced unblocking. Each browser offers unique features tailored to your needs.</p>
     </div>
 </div>
 
@@ -5296,7 +5296,7 @@ alt="favicon">
                   <div class="whats-new-footer">
                       <div class="footer-card">
                           <h3><i class="fas fa-question-circle"></i> Need Help?</h3>
-                          <p>Check out our comprehensive help guide to learn more about all the features and keyboard shortcuts available in NautilusOS.</p>
+                          <p>Check out our comprehensive help guide to learn more about all the features and keyboard shortcuts available in Web Linux.</p>
                           <a href="#" onclick="event.preventDefault(); hideContextMenu(); openApp('help')">
                               Open Help <i class="fas fa-arrow-right"></i>
                           </a>
@@ -5304,8 +5304,8 @@ alt="favicon">
 
                       <div class="footer-card">
                           <h3><i class="fas fa-code"></i> Open Source</h3>
-                          <p>NautilusOS is crafted with care by <strong>dinguschan</strong>. Built with vanilla HTML, CSS, and JavaScript - no frameworks needed!</p>
-                          <a href="https://github.com/dinguschan-owo/NautilusOS" onclick="event.stopPropagation()">
+                          <p>Web Linux is crafted with care by <strong>dinguschan</strong>. Built with vanilla HTML, CSS, and JavaScript - no frameworks needed!</p>
+                          <a href="https://github.com/dinguschan-owo/Web Linux" onclick="event.stopPropagation()">
                               View on GitHub <i class="fas fa-external-link-alt"></i>
                           </a>
                       </div>
@@ -5316,7 +5316,7 @@ alt="favicon">
       height: 600,
     },
     about: {
-      title: "About NautilusOS",
+      title: "About Web Linux",
       icon: "fas fa-info-circle",
       content: `
         <div class="about-app-container" style="padding: 1.75rem 1.25rem 4rem; max-height: 80vh; overflow: auto; display: flex; flex-direction: column; box-sizing: border-box;">
@@ -5324,10 +5324,10 @@ alt="favicon">
             <div style="width: 100px; height: 100px; background: linear-gradient(135deg, var(--accent), var(--accent-hover)); border-radius: 50%; display: flex; align-items: center; justify-content: center; margin: 0 auto 1rem; animation: float 3s ease-in-out infinite;">
               <i class="fas fa-fish" style="font-size: 3rem; color: var(--bg-primary);"></i>
             </div>
-            <h1 style="font-size: 2rem; margin-bottom: 0; color: var(--text-primary); font-family: fontb; text-align: center; width: 100%;">NautilusOS</h1>
+            <h1 style="font-size: 2rem; margin-bottom: 0; color: var(--text-primary); font-family: fontb; text-align: center; width: 100%;">Web Linux</h1>
             <p style="color: var(--text-secondary); font-size: 1rem; margin: 0; text-align: center; width: 100%;">Version 1.5</p>
             <p style="color: var(--text-secondary); font-size: 0.9rem; max-width:700px; margin: 1rem auto 0; line-height:1.6; text-align: center;">
-              A beautiful, fully-featured web-based operating system experience. Built with vanilla HTML, CSS, and JavaScript — no frameworks needed! NautilusOS brings you a complete desktop environment right in your browser, with file management, multiple apps, themes, and more.
+              A beautiful, fully-featured web-based operating system experience. Built with vanilla HTML, CSS, and JavaScript — no frameworks needed! Web Linux brings you a complete desktop environment right in your browser, with file management, multiple apps, themes, and more.
             </p>
           </div>
 
@@ -5429,7 +5429,7 @@ alt="favicon">
                 <div class="dev-info" id="devinfo-lanefiedler731" style="max-height: 0; overflow: hidden; transition: max-height 0.3s ease; background: rgba(21, 25, 35, 0.5);">
                   <div style="padding: 1rem; border-top: 1px solid var(--border);">
                     <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem; line-height: 1.6;">
-                      A talented contributor who has helped expand NautilusOS with new features, improvements, and bug fixes. 
+                      A talented contributor who has helped expand Web Linux with new features, improvements, and bug fixes. 
                       Passionate about creating great user experiences and pushing the boundaries of web-based applications.
                     </p>
                     <div style="display: flex; gap: 0.75rem; flex-wrap: wrap; margin-bottom: 1rem;">
@@ -5474,7 +5474,7 @@ alt="favicon">
               <i class="fas fa-hands-helping" style="color: var(--accent);"></i> Contributors
             </h2>
             <p style="color: var(--text-secondary); font-size: 0.9rem; margin-bottom: 1rem;">
-              Special thanks to our contributors who help improve NautilusOS!
+              Special thanks to our contributors who help improve Web Linux!
             </p>
 
             <div class="contributors-grid" style="display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem;">
@@ -5530,10 +5530,10 @@ alt="favicon">
 
           <div class="about-footer" style="display: flex; flex-direction: column; align-items: center; text-align: center; padding: 1rem 1rem 0.5rem; border-top: 1px solid var(--border); margin-top: auto; background: transparent;">
             <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 0.75rem; text-align: center;">
-              Made with <i class="fas fa-heart" style="color: #ef4444;"></i> by the NautilusOS team
+              Made with <i class="fas fa-heart" style="color: #ef4444;"></i> by the Web Linux team
             </p>
             <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-              <a href="https://github.com/nautilus-os/NautilusOS" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(125, 211, 192, 0.15); border: 1px solid rgba(125, 211, 192, 0.3); border-radius: 8px; color: var(--text-primary); text-decoration: none; font-size: 0.85rem; transition: all 0.2s ease;"
+              <a href="https://github.com/nautilus-os/Web Linux" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(125, 211, 192, 0.15); border: 1px solid rgba(125, 211, 192, 0.3); border-radius: 8px; color: var(--text-primary); text-decoration: none; font-size: 0.85rem; transition: all 0.2s ease;"
                    onmouseover="this.style.background='rgba(125, 211, 192, 0.25)'" onmouseout="this.style.background='rgba(125, 211, 192, 0.15)'">
                 <i class="fab fa-github"></i> View on GitHub
               </a>
@@ -5615,7 +5615,7 @@ alt="favicon">
                           </div>
                           <textarea class="python-code-editor" id="pythonCodeEditor" placeholder="# Write your Python code here
 # Example:
-print('Hello from NautilusOS!')
+print('Hello from Web Linux!')
 
 # Basic operations
 x = 10
@@ -5659,7 +5659,7 @@ print(f'Sum: {sum(numbers)}')
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 3rem; background: rgba(10, 14, 26, 0.8);">
               <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color: var(--error-red); margin-bottom: 2rem;"></i>
               <h2 style="margin-bottom: 1rem; color: var(--text-primary);">Ultraviolet Unavailable</h2>
-              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">Ultraviolet doesn't work on file:// protocol. Please run NautilusOS from a web server to use this feature.</p>
+              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">Ultraviolet doesn't work on file:// protocol. Please run Web Linux from a web server to use this feature.</p>
             </div>
           `;
         }
@@ -5682,7 +5682,7 @@ print(f'Sum: {sum(numbers)}')
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 3rem; background: rgba(10, 14, 26, 0.8);">
               <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color: var(--error-red); margin-bottom: 2rem;"></i>
               <h2 style="margin-bottom: 1rem; color: var(--text-primary);">VS Code Unavailable</h2>
-              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">Visual Studio Code doesn't work on file:// protocol. Please run NautilusOS from a web server to use this feature.</p>
+              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">Visual Studio Code doesn't work on file:// protocol. Please run Web Linux from a web server to use this feature.</p>
             </div>
           `;
         }
@@ -5733,7 +5733,7 @@ print(f'Sum: {sum(numbers)}')
             <div style="display: flex; flex-direction: column; align-items: center; justify-content: center; height: 100%; padding: 3rem; background: rgba(10, 14, 26, 0.8);">
               <i class="fas fa-exclamation-triangle" style="font-size: 5rem; color: var(--error-red); margin-bottom: 2rem;"></i>
               <h2 style="margin-bottom: 1rem; color: var(--text-primary);">Helios Unavailable</h2>
-              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">Helios Browser doesn't work on file:// protocol. Please run NautilusOS from a web server to use this feature.</p>
+              <p style="color: var(--text-secondary); text-align: center; max-width: 400px;">Helios Browser doesn't work on file:// protocol. Please run Web Linux from a web server to use this feature.</p>
             </div>
           `;
         }
@@ -5775,7 +5775,7 @@ print(f'Sum: {sum(numbers)}')
     <div class="appstore-main" id="appstoreMain">
         <div class="appstore-header">
             <h2>Themes</h2>
-            <p>Customize your NautilusOS experience</p>
+            <p>Customize your Web Linux experience</p>
         </div>
         <div class="appstore-grid">
             <div class="appstore-item">
@@ -5783,7 +5783,7 @@ print(f'Sum: {sum(numbers)}')
                     <i class="fas fa-moon"></i>
                 </div>
                 <div class="appstore-item-name">Dark Theme by dinguschan</div>
-                <div class="appstore-item-desc">The default NautilusOS theme. Sleek dark interface with teal accents,
+                <div class="appstore-item-desc">The default Web Linux theme. Sleek dark interface with teal accents,
                     perfect for extended use and reducing eye strain.</div>
                 <button class="appstore-item-btn installed" style="opacity: 0.6; cursor: not-allowed;" disabled>
                     Installed (Default)
@@ -6095,7 +6095,7 @@ print(f'Sum: {sum(numbers)}')
       height: 600,
     },
     "nautilus-ai": {
-      title: "Nautilus AI Assistant",
+      title: "Web Linux AI Assistant",
       icon: "fas fa-robot",
       content: `
         <div id="nautilusAiContainer" style="display: flex; flex-direction: column; height: 100%; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
@@ -6103,7 +6103,7 @@ print(f'Sum: {sum(numbers)}')
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
               <i class="fas fa-robot" style="color: var(--accent); font-size: 24px;"></i>
               <div>
-                <h2 style="color: var(--accent); margin: 0; font-size: 18px;">Nautilus AI Assistant</h2>
+                <h2 style="color: var(--accent); margin: 0; font-size: 18px;">Web Linux AI Assistant</h2>
                 <div style="color: #94a3b8; font-size: 11px; margin-top: 2px;">by lanefiedler-731 | Powered by WebLLM</div>
               </div>
             </div>
@@ -6149,11 +6149,11 @@ print(f'Sum: {sum(numbers)}')
                 <strong style="color: var(--accent);">Nautilus AI</strong>
               </div>
               <div style="color: #cbd5e1; line-height: 1.6;">
-                Hello! I'm your Nautilus AI Assistant. I can help you understand and navigate NautilusOS.<br><br>
+                Hello! I'm your Web Linux AI Assistant. I can help you understand and navigate Web Linux.<br><br>
                 <strong style="color: var(--accent);"><i class="fas fa-brain"></i> Model: Smarty (Qwen3-0.6B)</strong><br>
                 Advanced reasoning with thinking mode enabled. Switch models in the dropdown if needed.<br><br>
                 <strong style="color: var(--accent);"><i class="fa-solid fa-robot"></i> OS Automation Enabled!</strong><br>
-                I can control NautilusOS for you! I can open apps, run terminal commands, manage files, change settings, and more. Just ask me to do something and I'll request your approval before taking action.<br><br>
+                I can control Web Linux for you! I can open apps, run terminal commands, manage files, change settings, and more. Just ask me to do something and I'll request your approval before taking action.<br><br>
                 <strong style="color: var(--accent);"><i class="fa-solid fa-cloud"></i> Thinking Mode Active!</strong><br>
                 For complex tasks, I'll show my reasoning process in a collapsible "Thinking" section.<br><br>
                 Try: "Open calculator" or "Change theme to blue"
@@ -6163,7 +6163,7 @@ print(f'Sum: {sum(numbers)}')
           
           <div style="background: rgba(15, 23, 42, 0.9); border-top: 2px solid rgba(125, 211, 192, 0.3); padding: 15px 20px;">
             <div style="display: flex; gap: 10px;">
-              <textarea id="aiInput" placeholder="Ask me anything about NautilusOS..." style="flex: 1; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(125, 211, 192, 0.3); border-radius: 8px; padding: 12px; color: #e2e8f0; font-size: 14px; resize: none; font-family: inherit; min-height: 25px; max-height: 150px;" rows="1"></textarea>
+              <textarea id="aiInput" placeholder="Ask me anything about Web Linux..." style="flex: 1; background: rgba(30, 41, 59, 0.8); border: 1px solid rgba(125, 211, 192, 0.3); border-radius: 8px; padding: 12px; color: #e2e8f0; font-size: 14px; resize: none; font-family: inherit; min-height: 25px; max-height: 150px;" rows="1"></textarea>
               <button
   id="aiSendBtn"
   onclick="sendAiMessage()"
@@ -6190,13 +6190,13 @@ print(f'Sum: {sum(numbers)}')
 
             </div>
             <div style="display: flex; gap: 8px; margin-top: 10px; flex-wrap: wrap;">
-              <button onclick="sendQuickQuestion('What apps are available in NautilusOS?')" style="background: rgba(125, 211, 192, 0.15); border: 1px solid rgba(125, 211, 192, 0.3); color: var(--accent); padding: 6px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(125, 211, 192, 0.25)'" onmouseout="this.style.background='rgba(125, 211, 192, 0.15)'">
+              <button onclick="sendQuickQuestion('What apps are available in Web Linux?')" style="background: rgba(125, 211, 192, 0.15); border: 1px solid rgba(125, 211, 192, 0.3); color: var(--accent); padding: 6px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(125, 211, 192, 0.25)'" onmouseout="this.style.background='rgba(125, 211, 192, 0.15)'">
                 <i class="fas fa-th"></i> Available Apps
               </button>
-              <button onclick="sendQuickQuestion('How do I manage files in NautilusOS?')" style="background: rgba(125, 211, 192, 0.15); border: 1px solid rgba(125, 211, 192, 0.3); color: var(--accent); padding: 6px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(125, 211, 192, 0.25)'" onmouseout="this.style.background='rgba(125, 211, 192, 0.15)'">
+              <button onclick="sendQuickQuestion('How do I manage files in Web Linux?')" style="background: rgba(125, 211, 192, 0.15); border: 1px solid rgba(125, 211, 192, 0.3); color: var(--accent); padding: 6px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(125, 211, 192, 0.25)'" onmouseout="this.style.background='rgba(125, 211, 192, 0.15)'">
                 <i class="fas fa-folder"></i> File Management
               </button>
-              <button onclick="sendQuickQuestion('How do I customize my NautilusOS experience?')" style="background: rgba(125, 211, 192, 0.15); border: 1px solid rgba(125, 211, 192, 0.3); color: var(--accent); padding: 6px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(125, 211, 192, 0.25)'" onmouseout="this.style.background='rgba(125, 211, 192, 0.15)'">
+              <button onclick="sendQuickQuestion('How do I customize my Web Linux experience?')" style="background: rgba(125, 211, 192, 0.15); border: 1px solid rgba(125, 211, 192, 0.3); color: var(--accent); padding: 6px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(125, 211, 192, 0.25)'" onmouseout="this.style.background='rgba(125, 211, 192, 0.15)'">
                 <i class="fas fa-palette"></i> Customization
               </button>
               <button onclick="clearAiChat()" style="background: rgba(239, 68, 68, 0.15); border: 1px solid rgba(239, 68, 68, 0.3); color: #ef4444; padding: 6px 12px; border-radius: 6px; font-size: 11px; cursor: pointer; transition: all 0.2s;" onmouseover="this.style.background='rgba(239, 68, 68, 0.25)'" onmouseout="this.style.background='rgba(239, 68, 68, 0.15)'">
@@ -6353,7 +6353,7 @@ print(f'Sum: {sum(numbers)}')
     if (appName === "browser") {
       setTimeout(() => {
         showToast(
-          "Nautilus Browser not good enough? Check out Helios Browser and UV on the App Store!",
+          "Web Linux Browser not good enough? Check out Helios Browser and UV on the App Store!",
           "fa-info-circle"
         );
       }, 500);
@@ -6419,7 +6419,7 @@ function handleTerminalInput(e) {
 
     const cmdLine = document.createElement("div");
     cmdLine.className = "terminal-line";
-    cmdLine.innerHTML = `<span class="terminal-prompt">user@nautilusos:~$ </span>${command}`;
+    cmdLine.innerHTML = `<span class="terminal-prompt">user@web-linux:~$ </span>${command}`;
     terminal.insertBefore(cmdLine, terminal.lastElementChild);
 
     const output = document.createElement("div");
@@ -6490,7 +6490,7 @@ function handleTerminalInput(e) {
         "Please wait a few moments and try reloading the store.";
     } else if (command === "clear") {
       terminal.innerHTML = `
-                      <div class="terminal-line" style="color: var(--accent);">NautilusOS Terminal v1.5</div>
+                      <div class="terminal-line" style="color: var(--accent);">Web Linux Terminal v2.0</div>
                       <div class="terminal-line" style="color: #888; margin-bottom: 1rem;">Type 'help' for available commands</div>
                   `;
     } else if (command === "date") {
@@ -6508,7 +6508,7 @@ function handleTerminalInput(e) {
     const newInputLine = document.createElement("div");
     newInputLine.className = "terminal-line";
     newInputLine.innerHTML =
-      '<span class="terminal-prompt">user@nautilusos:~$ </span><input type="text" class="terminal-input" id="terminalInput" onkeypress="handleTerminalInput(event)">';
+      '<span class="terminal-prompt">user@web-linux:~$ </span><input type="text" class="terminal-input" id="terminalInput" onkeypress="handleTerminalInput(event)">';
 
     terminal.removeChild(terminal.lastElementChild);
     terminal.appendChild(newInputLine);
@@ -7233,12 +7233,12 @@ const APP_NAMES = {
   calculator: "Calculator",
   cloaking: "Cloaking",
   achievements: "Achievements",
-  browser: "Nautilus Browser",
+  browser: "Web Linux Browser",
   "ai-snake": "AI Snake Learning",
-  "nautilus-ai": "Nautilus AI Assistant",
+  "nautilus-ai": "Web Linux AI Assistant",
   python: "Python Interpreter",
   "web-app-creator": "Web App Creator",
-  about: "About NautilusOS"
+  about: "About Web Linux"
 };
 
 function initTaskbarTooltips() {
@@ -7292,14 +7292,14 @@ function initTaskbarTooltips() {
 async function downloadOneFile() {
   try {
     showToast("Preparing download...", "fa-download");
-    const response = await fetch('https://raw.githubusercontent.com/nautilus-os/NautilusOS/refs/heads/main/NautilusOS-OneFile/index.html');
+    const response = await fetch('https://raw.githubusercontent.com/nautilus-os/Web Linux/refs/heads/main/Web Linux-OneFile/index.html');
     if (!response.ok) throw new Error("Network response was not ok");
 
     const blob = await response.blob();
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement('a');
     a.href = url;
-    a.download = 'NautilusOS-OneFile.html';
+    a.download = 'Web Linux-OneFile.html';
     document.body.appendChild(a);
     a.click();
     window.URL.revokeObjectURL(url);
@@ -7308,7 +7308,7 @@ async function downloadOneFile() {
   } catch (error) {
     console.error("Download failed:", error);
     showToast("Download failed! Opening link instead.", "fa-exclamation-triangle");
-    window.open('https://raw.githubusercontent.com/nautilus-os/NautilusOS/refs/heads/main/NautilusOS-OneFile/index.html', '_blank');
+    window.open('https://raw.githubusercontent.com/nautilus-os/Web Linux/refs/heads/main/Web Linux-OneFile/index.html', '_blank');
   }
 }
 
@@ -7731,7 +7731,7 @@ function switchAppStoreSection(section, element) {
       {
         name: "Dark Theme",
         author: "dinguschan",
-        desc: "The default NautilusOS theme. Sleek dark interface with teal accents, perfect for extended use and reducing eye strain.",
+        desc: "The default Web Linux theme. Sleek dark interface with teal accents, perfect for extended use and reducing eye strain.",
         customPreviewHtml: `<div class="illustration-dark-theme"><div class="illustration-dark-window"><div class="illustration-dark-header"></div><div class="illustration-dark-content"><div class="illustration-dark-line" style="width: 80%;"></div><div class="illustration-dark-line" style="width: 60%;"></div><div class="illustration-dark-line" style="width: 90%;"></div></div></div></div>`,
         isInstalled: true,
         installButtonText: "Installed (Default)",
@@ -7750,7 +7750,7 @@ function switchAppStoreSection(section, element) {
     mainContent.innerHTML = `
         <div class="appstore-header">
             <h2>Themes</h2>
-            <p>Customize your NautilusOS experience</p>
+            <p>Customize your Web Linux experience</p>
         </div>
         <div class="appstore-grid">
             ${items.map(item => renderAppItem(item)).join('')}
@@ -7812,7 +7812,7 @@ function switchAppStoreSection(section, element) {
       {
         name: "Visual Studio Code",
         author: "Microsoft",
-        desc: "The developer's choice for text editing, now on NautilusOS.",
+        desc: "The developer's choice for text editing, now on Web Linux.",
         customPreviewHtml: `<div class="illustration-vscode"> <div class="illustration-vscode-header"></div> <div class="illustration-vscode-content"> <div class="illustration-vscode-line"></div> <div class="illustration-vscode-line" style="width: 80%;"></div> <div class="illustration-vscode-line" style="width: 60%;"></div> </div> </div>`,
         isInstalled: installedApps.includes("vsc"),
         installAction: "installApp('vsc')",
@@ -7822,7 +7822,7 @@ function switchAppStoreSection(section, element) {
       {
         name: "V86 Emulator",
         author: "lanefiedler-731",
-        desc: "Run x86 operating systems and software within NautilusOS. Experience virtualized computing with full system emulation.",
+        desc: "Run x86 operating systems and software within Web Linux. Experience virtualized computing with full system emulation.",
         customPreviewHtml: `<div class="illustration-v86"> <div class="illustration-v86-line"></div> <div class="illustration-v86-line" style="width: 60%;"></div> <div class="illustration-v86-cursor"></div> </div>`,
         isInstalled: installedApps.includes("v86-emulator"),
         installAction: "installApp('v86-emulator')",
@@ -7830,9 +7830,9 @@ function switchAppStoreSection(section, element) {
         type: "app"
       },
       {
-        name: "Nautilus AI Assistant",
+        name: "Web Linux AI Assistant",
         author: "lanefiedler-731",
-        desc: "Your personal AI assistant powered by WebLLM. Get instant help with NautilusOS features, apps, settings, and more. Runs entirely in your browser with no server required!",
+        desc: "Your personal AI assistant powered by WebLLM. Get instant help with Web Linux features, apps, settings, and more. Runs entirely in your browser with no server required!",
         customPreviewHtml: `<div class="illustration-nautilus-ai"> <div class="illustration-nautilus-ai-header"> <div class="illustration-nautilus-ai-icon"><i class="fas fa-robot"></i></div> <div class="illustration-nautilus-ai-title">Nautilus AI</div> </div> <div class="illustration-nautilus-ai-content"> <div class="illustration-nautilus-ai-msg-ai"> <div class="illustration-nautilus-ai-line" style="width: 90%;"></div> <div class="illustration-nautilus-ai-line" style="width: 60%;"></div> </div> <div class="illustration-nautilus-ai-msg-user"> <div class="illustration-nautilus-ai-line" style="width: 80%;"></div> </div> </div> </div>`,
         isInstalled: true,
         installButtonText: "Open",
@@ -7859,9 +7859,9 @@ function switchAppStoreSection(section, element) {
         type: "app"
       },
       {
-        name: "About NautilusOS",
+        name: "About Web Linux",
         author: "dinguschan and Nautilus Labs",
-        desc: "Learn more about NautilusOS and its features.",
+        desc: "Learn more about Web Linux and its features.",
         isInstalled: installedApps.includes("about"),
         installAction: "installApp('about')",
         uninstallAction: "uninstallApp('about')",
@@ -7870,7 +7870,7 @@ function switchAppStoreSection(section, element) {
       {
         name: "Settings",
         author: "dinguschan and Nautilus Labs",
-        desc: "Customize your NautilusOS experience.",
+        desc: "Customize your Web Linux experience.",
         isInstalled: installedApps.includes("settings"),
         installAction: "installApp('settings')",
         uninstallAction: "uninstallApp('settings')",
@@ -7895,7 +7895,7 @@ function switchAppStoreSection(section, element) {
         type: "app"
       },
       {
-        name: "Nautilus Browser",
+        name: "Web Linux Browser",
         author: "dinguschan and Nautilus Labs",
         desc: "Browse the web with this built-in browser.",
         isInstalled: installedApps.includes("browser"),
@@ -8012,7 +8012,7 @@ function switchAppStoreSection(section, element) {
     mainContent.innerHTML = `
           <div class="appstore-header">
               <h2>Games</h2>
-              <p>Play and enjoy games on NautilusOS</p>
+              <p>Play and enjoy games on Web Linux</p>
           </div>
           <div class="appstore-grid">
               ${items.map(item => renderAppItem(item)).join('')}
@@ -9424,7 +9424,7 @@ function setupComplete() {
     }, 100);
   }
 
-  let welcomeMessage = "Setup complete! Welcome to NautilusOS";
+  let welcomeMessage = "Setup complete! Welcome to Web Linux";
   let toastIcon = "fa-check-circle";
   if (username.toLowerCase() === "dinguschan") {
     welcomeMessage = "Welcome back, developer! Is it really you?!";
@@ -9822,7 +9822,7 @@ let installedGames = [];
 let bloatlessMode = false;
 
 function hashPassword(password) {
-  const salt = "NautilusOS_Salt_2024"; // Simple salt for demo
+  const salt = "Web Linux_Salt_2024"; // Simple salt for demo
   let hash = 0;
   const combined = password + salt;
   for (let i = 0; i < combined.length; i++) {
@@ -10926,7 +10926,7 @@ function addDesktopIcon(appName) {
   } else if (appName === "ai-snake") {
     iconConfig = { icon: "fa-brain", label: "AI Snake Learning" };
   } else if (appName === "nautilus-ai") {
-    iconConfig = { icon: "fa-robot", label: "Nautilus AI Assistant" };
+    iconConfig = { icon: "fa-robot", label: "Web Linux AI Assistant" };
   } else {
     // Try to get from appMetadata
     const metadata = appMetadata[appName];
@@ -10962,7 +10962,7 @@ function openStartupApps() {
   const preinstalledApps = [
     { id: "files", name: "Files", icon: "fa-folder" },
     { id: "terminal", name: "Terminal", icon: "fa-terminal" },
-    { id: "browser", name: "Nautilus Browser", icon: "fa-globe" },
+    { id: "browser", name: "Web Linux Browser", icon: "fa-globe" },
     { id: "settings", name: "Settings", icon: "fa-cog" },
     { id: "editor", name: "Text Editor", icon: "fa-edit" },
     { id: "music", name: "Music", icon: "fa-music" },
@@ -11084,7 +11084,7 @@ function toggleStartupApp(appId) {
       const preinstalledApps = [
         { id: "files", name: "Files", icon: "fa-folder" },
         { id: "terminal", name: "Terminal", icon: "fa-terminal" },
-        { id: "browser", name: "Nautilus Browser", icon: "fa-globe" },
+        { id: "browser", name: "Web Linux Browser", icon: "fa-globe" },
         { id: "settings", name: "Settings", icon: "fa-cog" },
         { id: "editor", name: "Text Editor", icon: "fa-edit" },
         { id: "music", name: "Music", icon: "fa-music" },
@@ -11535,7 +11535,7 @@ async function exportProfile() {
 
   const username = currentUsername || "user";
   const date = new Date().toISOString().split("T")[0];
-  const filename = `NautilusOS_${username}_${date}.nautilusprofile`;
+  const filename = `Web Linux_${username}_${date}.nautilusprofile`;
 
   const a = document.createElement("a");
   a.href = url;
@@ -11922,7 +11922,7 @@ let achievementsData = {
     "first-login": {
       id: "first-login",
       name: "Welcome Aboard!",
-      description: "Successfully log in to NautilusOS for the first time",
+      description: "Successfully log in to Web Linux for the first time",
       icon: "fa-fish",
       unlocked: false,
       unlockedDate: null,
@@ -11930,7 +11930,7 @@ let achievementsData = {
     "uptime-1h": {
       id: "uptime-1h",
       name: "Time Traveler",
-      description: "Keep NautilusOS running for 1 hour of total uptime",
+      description: "Keep Web Linux running for 1 hour of total uptime",
       icon: "fa-clock",
       unlocked: false,
       unlockedDate: null,
@@ -11988,7 +11988,7 @@ let achievementsData = {
     "power-user": {
       id: "power-user",
       name: "Power User",
-      description: "Access the NautilusOS BIOS setup utility",
+      description: "Access the Web Linux BIOS setup utility",
       icon: "fa-microchip",
       unlocked: false,
       unlockedDate: null,
@@ -12063,7 +12063,7 @@ let achievementsData = {
       id: "night-owl",
       name: "Night Owl",
       lockedName: "???",
-      description: "You used NautilusOS at an ungodly hour (12-3 AM)",
+      description: "You used Web Linux at an ungodly hour (12-3 AM)",
       icon: "fa-moon",
       unlocked: false,
       unlockedDate: null,
@@ -12649,7 +12649,7 @@ function resetClickoffCloak() {
 }
 
 function updateClickoffPreview() {
-  const title = document.getElementById("clickoffTitle").value.trim() || "NautilusOS";
+  const title = document.getElementById("clickoffTitle").value.trim() || "Web Linux";
   const faviconUrl = document.getElementById("clickoffFavicon").value.trim();
   const previewTitle = document.getElementById("clickoffPreviewTitle");
   const previewFavicon = document.getElementById("clickoffPreviewFavicon");
@@ -12983,7 +12983,7 @@ function toggleAntiScreenMonitoring() {
   if (cloakingConfig.antiScreenMonitoring) {
     if (toggle) toggle.classList.add("active");
     if (indicator) indicator.classList.add("active");
-    if (statusDesc) statusDesc.textContent = "Enabled - NautilusOS will black out when you switch tabs";
+    if (statusDesc) statusDesc.textContent = "Enabled - Web Linux will black out when you switch tabs";
     if (antiMonitorSettings) {
       antiMonitorSettings.style.opacity = "1";
       antiMonitorSettings.style.pointerEvents = "auto";
@@ -13361,12 +13361,12 @@ function expandHelpTopic(topicId) {
 
   const topics = {
     welcome: {
-      title: "Welcome to NautilusOS",
+      title: "Welcome to Web Linux",
       icon: "fa-info-circle",
       content: `
-                <h2><i class="fas fa-info-circle"></i> Welcome to NautilusOS</h2>
-                <p>NautilusOS is a fully-featured web-based operating system with a complete desktop environment, virtual file system, and productivity applications.</p>
-                <p>This help system will guide you through all the features and capabilities of NautilusOS. Select any topic from the main menu to learn more.</p>
+                <h2><i class="fas fa-info-circle"></i> Welcome to Web Linux</h2>
+                <p>Web Linux is a fully-featured web-based operating system with a complete desktop environment, virtual file system, and productivity applications.</p>
+                <p>This help system will guide you through all the features and capabilities of Web Linux. Select any topic from the main menu to learn more.</p>
             `,
     },
     cloaking: {
@@ -13389,10 +13389,10 @@ function expandHelpTopic(topicId) {
       icon: "fa-power-off",
       content: `
                 <h2><i class="fas fa-power-off"></i> Boot Options</h2>
-                <p>NautilusOS offers two boot modes:</p>
+                <p>Web Linux offers two boot modes:</p>
                 <ul>
-                    <li><strong>Nautilus OS (Graphical)</strong> - Full desktop environment with windows, icons, and applications</li>
-                    <li><strong>Nautilus OS (Command Line)</strong> - Terminal-only interface for command-line operations</li>
+                    <li><strong>Web Linux (Graphical)</strong> - Full desktop environment with windows, icons, and applications</li>
+                    <li><strong>Web Linux (Command Line)</strong> - Terminal-only interface for command-line operations</li>
                 </ul>
                 <p>Your boot choice is remembered automatically. To change it, open Settings → System → Reset Boot Preference.</p>
             `,
@@ -13406,20 +13406,20 @@ function expandHelpTopic(topicId) {
                 <ul>
                     <li><strong>Files</strong> - Browse and manage your virtual file system with tree navigation</li>
                     <li><strong>Terminal</strong> - Access command-line interface with Unix commands</li>
-                    <li><strong>Nautilus Browser</strong> - Browse the web with multiple tabs and navigation</li>
+                    <li><strong>Web Linux Browser</strong> - Browse the web with multiple tabs and navigation</li>
                     <li><strong>Text Editor</strong> - Create and edit text files with save options</li>
                     <li><strong>Music</strong> - Play audio files with playback controls</li>
                     <li><strong>Photos</strong> - View screenshots and images</li>
                     <li><strong>Calculator</strong> - Perform calculations with basic operations</li>
                     <li><strong>Settings</strong> - Customize clock format, desktop icons, and themes</li>
                     <li><strong>App Store</strong> - Browse and install themes and apps</li>
-                    <li><strong>About NautilusOS</strong> - Learn about the system and its features</li>
+                    <li><strong>About Web Linux</strong> - Learn about the system and its features</li>
                     <li><strong>Python Interpreter</strong> - Run Python code interactively</li>
                     <li><strong>Achievements</strong> - Track your progress with achievements and Easter eggs</li>
                     <li><strong>Cloaking</strong> - Disguise your browser tab</li>
                     <li><strong>What's New</strong> - View latest features and updates</li>
                     <li><strong>AI Snake Learning</strong> - Watch AI learn to play Snake</li>
-                    <li><strong>Nautilus AI Assistant</strong> - Get help from an AI assistant</li>
+                    <li><strong>Web Linux AI Assistant</strong> - Get help from an AI assistant</li>
                     <li><strong>Web App Creator</strong> - Create and customize web applications</li>
                     <li><strong>Help</strong> - System help and documentation</li>
                 </ul>
@@ -13472,7 +13472,7 @@ function expandHelpTopic(topicId) {
                     <li><strong>Screenshot</strong> - Capture your desktop instantly</li>
                     <li><strong>Close All</strong> - Close all open windows at once</li>
                     <li><strong>Sign Out</strong> - Return to login screen</li>
-                    <li><strong>Shut Down</strong> - Exit NautilusOS completely</li>
+                    <li><strong>Shut Down</strong> - Exit Web Linux completely</li>
                 </ul>
                 <h3>Notification Center</h3>
                 <p>Click the <strong>bell icon</strong> to view your notification history. All system messages are stored here so you can review them later.</p>
@@ -13645,11 +13645,11 @@ function expandHelpTopic(topicId) {
             `,
     },
     'app-about': {
-      title: "About NautilusOS",
+      title: "About Web Linux",
       icon: "fa-info-circle",
       content: `
-                <h2><i class="fas fa-info-circle"></i> About NautilusOS</h2>
-                <p>Learn more about NautilusOS, its features, and development.</p>
+                <h2><i class="fas fa-info-circle"></i> About Web Linux</h2>
+                <p>Learn more about Web Linux, its features, and development.</p>
                 <h3>Information</h3>
                 <ul>
                     <li><strong>Version</strong> - Current version information</li>
@@ -13664,7 +13664,7 @@ function expandHelpTopic(topicId) {
       icon: "fa-cog",
       content: `
                 <h2><i class="fas fa-cog"></i> Settings</h2>
-                <p>Customize your NautilusOS experience with various options.</p>
+                <p>Customize your Web Linux experience with various options.</p>
                 <h3>Available Settings</h3>
                 <ul>
                     <li><strong>Clock Format</strong> - 12-hour or 24-hour time</li>
@@ -13681,7 +13681,7 @@ function expandHelpTopic(topicId) {
       icon: "fa-store",
       content: `
                 <h2><i class="fas fa-store"></i> App Store</h2>
-                <p>Browse and install additional apps and themes for NautilusOS.</p>
+                <p>Browse and install additional apps and themes for Web Linux.</p>
                 <h3>Sections</h3>
                 <ul>
                     <li><strong>Themes</strong> - Custom color schemes and visual styles</li>
@@ -13716,10 +13716,10 @@ function expandHelpTopic(topicId) {
             `,
     },
     'app-browser': {
-      title: "Nautilus Browser",
+      title: "Web Linux Browser",
       icon: "fa-globe",
       content: `
-                <h2><i class="fas fa-globe"></i> Nautilus Browser</h2>
+                <h2><i class="fas fa-globe"></i> Web Linux Browser</h2>
                 <p>Browse the web with multiple tabs and full navigation controls.</p>
                 <h3>Features</h3>
                 <ul>
@@ -13766,7 +13766,7 @@ function expandHelpTopic(topicId) {
                     <li><strong>Image Upload</strong> - Load images from your device</li>
                     <li><strong>Gallery View</strong> - Browse all uploaded images</li>
                     <li><strong>Full View</strong> - View images in full size</li>
-                    <li><strong>Screenshot Capture</strong> - Take screenshots of NautilusOS</li>
+                    <li><strong>Screenshot Capture</strong> - Take screenshots of Web Linux</li>
                     <li><strong>Delete</strong> - Remove unwanted images</li>
                 </ul>
                 <h3>Supported Formats</h3>
@@ -13790,7 +13790,7 @@ function expandHelpTopic(topicId) {
                     <li><strong>Clear Output</strong> - Reset the interpreter</li>
                 </ul>
                 <h3>Example Code</h3>
-                <pre><code>print('Hello from NautilusOS!')
+                <pre><code>print('Hello from Web Linux!')
 x = 10
 y = 20
 result = x + y
@@ -13802,7 +13802,7 @@ print(f'Result: {result}')</code></pre>
       icon: "fa-trophy",
       content: `
                 <h2><i class="fas fa-trophy"></i> Achievements</h2>
-                <p>Track your progress and unlock achievements as you explore NautilusOS.</p>
+                <p>Track your progress and unlock achievements as you explore Web Linux.</p>
                 <h3>Features</h3>
                 <ul>
                     <li><strong>Achievement List</strong> - View all available achievements</li>
@@ -13823,7 +13823,7 @@ print(f'Result: {result}')</code></pre>
       icon: "fa-star",
       content: `
                 <h2><i class="fas fa-star"></i> What's New</h2>
-                <p>Stay updated with the latest features and improvements in NautilusOS.</p>
+                <p>Stay updated with the latest features and improvements in Web Linux.</p>
                 <h3>Features</h3>
                 <ul>
                     <li><strong>Feature Carousel</strong> - Interactive slideshow of new features</li>
@@ -13832,7 +13832,7 @@ print(f'Result: {result}')</code></pre>
                     <li><strong>Auto-play</strong> - Automatic progression through features</li>
                 </ul>
                 <h3>Current Version</h3>
-                <p>NautilusOS v1.5 includes AI Assistant, multiple browsers, more themes, VS Code integration, window snapping, games, and more!</p>
+                <p>Web Linux v2.0 includes AI Assistant, multiple browsers, more themes, VS Code integration, window snapping, games, and more!</p>
             `,
     },
   };
@@ -13876,7 +13876,7 @@ function updateCloakPreview() {
 
   if (!titleInput || !previewTitle) return;
 
-  const title = titleInput.value.trim() || "NautilusOS";
+  const title = titleInput.value.trim() || "Web Linux";
   previewTitle.textContent = title;
 
   if (faviconInput && previewFavicon) {
@@ -16027,7 +16027,7 @@ const AI_MODELS = {
 const OS_AUTOMATION_TOOLS = {
   open_app: {
     name: "open_app",
-    description: "Open an application in NautilusOS",
+    description: "Open an application in Web Linux",
     parameters: {
       app_name: "string - Name of the app (e.g., 'files', 'terminal', 'settings', 'browser', 'editor', 'music', 'photos', 'calculator', 'appstore', 'cloaking', 'achievements', 'ai-snake')",
       reason: "string - Why this app needs to be opened"
@@ -16043,7 +16043,7 @@ const OS_AUTOMATION_TOOLS = {
   },
   run_terminal_command: {
     name: "run_terminal_command",
-    description: "Execute a terminal command in NautilusOS",
+    description: "Execute a terminal command in Web Linux",
     parameters: {
       command: "string - The terminal command to execute (e.g., 'ls', 'apps', 'help', 'date', 'whoami', 'clear')",
       reason: "string - Why this command needs to be executed"
@@ -16130,10 +16130,10 @@ const OS_AUTOMATION_TOOLS = {
   }
 };
 
-const NAUTILUS_SYSTEM_PROMPT = `You are the Nautilus AI Assistant, an expert guide for NautilusOS - a web-based operating system built entirely in HTML, CSS, and JavaScript.
+const NAUTILUS_SYSTEM_PROMPT = `You are the Web Linux AI Assistant, an expert guide for Web Linux - a web-based operating system built entirely in HTML, CSS, and JavaScript.
 
 <i class="fa-solid fa-robot"></i> OS AUTOMATION CAPABILITIES:
-You have the ability to control and automate NautilusOS! You can execute actions on behalf of the user with their approval.
+You have the ability to control and automate Web Linux! You can execute actions on behalf of the user with their approval.
 
 IMPORTANT: When you want to perform an action, output a JSON object in your response with this structure:
 
@@ -16249,7 +16249,7 @@ You: "I'll open the terminal and run the date command!
 CORE KNOWLEDGE ABOUT NAUTILUSOS:
 
 ARCHITECTURE & TECHNOLOGY:
-- NautilusOS is a complete web-based OS running entirely in the browser
+- Web Linux is a complete web-based OS running entirely in the browser
 - Built with vanilla HTML, CSS, and JavaScript (no frameworks)
 - Uses local storage for persistence (localStorage and sessionStorage)
 - File system is virtual and stored in browser memory/localStorage
@@ -16259,7 +16259,7 @@ ARCHITECTURE & TECHNOLOGY:
 AVAILABLE APPLICATIONS:
 1. Files - Full file explorer with folder navigation, tree sidebar, create/delete/rename operations
 2. Terminal - Command-line interface with bash-like commands
-3. Nautilus Browser - Built-in web browser with proxy support (Helios Browser embedded)
+3. Web Linux Browser - Built-in web browser with proxy support (Helios Browser embedded)
 4. Text Editor - Create and edit text files with save/load functionality
 5. Music Player - Play music from URLs or uploaded files
 6. Photos - View, upload, and manage photos with screenshot capability
@@ -16275,7 +16275,7 @@ AVAILABLE APPLICATIONS:
 16. Startup Apps - Configure apps to launch on boot
 17. V86 Emulator - Run actual operating systems in the browser
 18. AI Snake Learning - Neural network that learns to play Snake (by lanefiedler-731)
-19. Nautilus AI Assistant - That's me! Your helpful AI guide (by lanefiedler-731)
+19. Web Linux AI Assistant - That's me! Your helpful AI guide (by lanefiedler-731)
 
 WINDOW MANAGEMENT:
 - Fully draggable windows with title bar drag
@@ -16392,11 +16392,11 @@ ADVANCED FEATURES:
 - Context menus for desktop and file operations
 
 DEVELOPER INFO:
-- NautilusOS created by lanefiedler-731, x8r, and dinguschan-owo
+- Web Linux created by lanefiedler-731, x8r, and dinguschan-owo
 - Open source on GitHub
 - No external frameworks (vanilla JS)
 - Community contributions welcome
-- Apps can be created by community (Nautilus AI Assistant by lanefiedler-731)
+- Apps can be created by community (Web Linux AI Assistant by lanefiedler-731)
 
 THINKING MODE (QWEN3 CAPABILITY):
 You have advanced reasoning capabilities! For complex tasks, you can use thinking mode to show your reasoning process:
@@ -16424,11 +16424,11 @@ When helping users:
 3. Reference exact app names and menu locations
 4. Explain both basic and advanced features
 5. Suggest related features users might find helpful
-6. Be enthusiastic about NautilusOS capabilities
+6. Be enthusiastic about Web Linux capabilities
 7. If unsure about something, admit it honestly
 8. Use thinking mode for complex reasoning and problem-solving
 
-Your goal is to make users feel confident and excited about using NautilusOS!`;
+Your goal is to make users feel confident and excited about using Web Linux!`;
 
 async function initializeNautilusAI(modelKey = null) {
   if (nautilusAI.isInitializing) return;
@@ -16894,10 +16894,10 @@ function clearAiChat() {
         <strong style="color: var(--accent);">Nautilus AI</strong>
       </div>
       <div style="color: #cbd5e1; line-height: 1.6;">
-        Hello! I'm your Nautilus AI Assistant. I can help you understand and navigate NautilusOS.<br><br>
+        Hello! I'm your Web Linux AI Assistant. I can help you understand and navigate Web Linux.<br><br>
         <strong style="color: var(--accent);"><i class="fas ${currentModelConfig.icon}"></i> Using: ${currentModelConfig.label}</strong> - ${currentModelConfig.description}<br><br>
         <strong style="color: var(--accent);"><i class="fa-solid fa-robot"></i>&nbsp;OS Automation Enabled!</strong><br>
-        I can control NautilusOS for you! Just ask me to do something and I'll request your approval before taking action.<br><br>
+        I can control Web Linux for you! Just ask me to do something and I'll request your approval before taking action.<br><br>
         <strong style="color: var(--accent);"><i class="fa-solid fa-cloud"></i> Thinking Mode Active!</strong><br>
         I can show my reasoning process for complex tasks. Watch for the collapsible "Thinking" section!<br><br>
         Try: "Open calculator" or "List available themes"
@@ -17132,7 +17132,7 @@ function executeTool_RunTerminalCommand(params) {
       // Add command to terminal display
       const cmdLine = document.createElement('div');
       cmdLine.className = 'terminal-line';
-      cmdLine.innerHTML = `<span class="terminal-prompt">user@nautilusos:~$ </span>${command}`;
+      cmdLine.innerHTML = `<span class="terminal-prompt">user@web-linux:~$ </span>${command}`;
       terminal.insertBefore(cmdLine, terminal.lastElementChild);
 
       // Execute the command logic (simplified version)
@@ -17503,7 +17503,7 @@ function executeTool_GetAvailableOptions(params) {
       installed: ['dark', ...installedThemes],
       available: ['dark', 'light', 'blue', 'red', 'purple', 'golden', 'green', 'liquidGlass'],
       current: localStorage.getItem('nOS_selectedTheme') || 'dark',
-      description: 'Available color themes for NautilusOS. Themes must be installed from App Store before use.'
+      description: 'Available color themes for Web Linux. Themes must be installed from App Store before use.'
     },
 
     search_engines: {
@@ -17554,7 +17554,7 @@ function executeTool_GetAvailableOptions(params) {
         name: appMetadata[key].name,
         preinstalled: appMetadata[key].preinstalled
       })),
-      description: 'All available applications in NautilusOS'
+      description: 'All available applications in Web Linux'
     }
   };
 
