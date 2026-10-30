@@ -2096,35 +2096,10 @@ function startBootSequence() {
               if (cliInput) cliInput.focus();
             }, 500);
           } else {
-            const setupComplete = localStorage.getItem(
-              "nautilusOS_setupComplete"
-            );
-
-            if (!setupComplete) {
-              setTimeout(() => {
-                const setup = document.getElementById("setup");
-                setup.style.display = "flex";
-                setTimeout(() => {
-                  setup.style.opacity = "1";
-                }, 50);
-              }, 500);
-            } else {
-              setTimeout(() => {
-                console.log(`[BOOT LOG] ${new Date().toISOString()}: Showing login screen`);
-                const savedUsername = localStorage.getItem(
-                  "nautilusOS_username"
-                );
-                if (savedUsername) {
-                  document.getElementById("username").value = savedUsername;
-                }
-                const login = document.getElementById("login");
-                login.classList.add("active");
-                startLoginClock();
-                displayBrowserInfo();
-                updateLoginGreeting();
-                updateLoginScreen();
-              }, 500);
-            }
+            setTimeout(() => {
+              console.log(`[BOOT LOG] ${new Date().toISOString()}: Starting guest desktop session`);
+              login();
+            }, 500);
           }
         }, 1200);
       }
@@ -2237,27 +2212,7 @@ function handleCLIInput(e) {
           cliMode.classList.remove("active");
           cliMode.style.opacity = "1";
 
-          const setupComplete = localStorage.getItem(
-            "nautilusOS_setupComplete"
-          );
-
-          if (!setupComplete) {
-            const setup = document.getElementById("setup");
-            setup.style.display = "flex";
-            setTimeout(() => {
-              setup.style.opacity = "1";
-            }, 50);
-          } else {
-            const savedUsername = localStorage.getItem("nautilusOS_username");
-            if (savedUsername) {
-              document.getElementById("username").value = savedUsername;
-            }
-            const login = document.getElementById("login");
-            login.classList.add("active");
-            startLoginClock();
-            displayBrowserInfo();
-            updateLoginGreeting();
-          }
+          login();
         }, 500);
       }, 500);
       input.value = "";
@@ -2330,72 +2285,13 @@ function startLoginClock() {
 }
 
 function login() {
-  console.log(`[LOGIN LOG] ${new Date().toISOString()}: Login function called`);
-  const username = document.getElementById("username").value;
-  const password = document.getElementById("password").value;
-
-  // Migrate old system if needed
-  migrateToMultiUserSystem();
-
-  // Get account from new multi-user system
-  const account = getAccountByUsername(username);
-
-  if (!account) {
-    // Fallback to old system for backwards compatibility
-    const savedUsername = localStorage.getItem("nautilusOS_username");
-    const savedPassword = localStorage.getItem("nautilusOS_password");
-    const isPasswordless = localStorage.getItem("nautilusOS_isPasswordless") === "true";
-
-    if (!username) {
-      showToast("Please enter username", "fa-exclamation-circle");
-      return;
-    }
-
-    if (username !== savedUsername) {
-      showToast("Invalid username", "fa-exclamation-circle");
-      return;
-    }
-
-    if (!isPasswordless) {
-      if (!password) {
-        showToast("Please enter password", "fa-exclamation-circle");
-        return;
-      }
-
-      const hashedPassword = hashPassword(password);
-      if (hashedPassword !== savedPassword) {
-        showToast("Invalid password", "fa-exclamation-circle");
-        return;
-      }
-    }
-
-    currentUsername = username;
-    currentUserAccount = null; // Old system doesn't use account objects
-  } else {
-    // New multi-user system
-    if (!username) {
-      showToast("Please enter username", "fa-exclamation-circle");
-      return;
-    }
-
-    if (!account.isPasswordless) {
-      if (!password) {
-        showToast("Please enter password", "fa-exclamation-circle");
-        return;
-      }
-
-      const hashedPassword = hashPassword(password);
-      if (hashedPassword !== account.password) {
-        showToast("Invalid password", "fa-exclamation-circle");
-        return;
-      }
-    }
-
-    currentUsername = username;
-    currentUserAccount = account;
-  }
-
+  // Web Linux now runs as a single local guest session. No account or password is required.
+  const username = "Guest";
+  currentUsername = username;
+  currentUserAccount = null;
   document.getElementById("displayUsername").textContent = username;
+
+
 
   if (username.toLowerCase() === "dinguschan" || username.toLowerCase() === "$xor" || username.toLowerCase() === "lanefiedler-731") {
     unlockEasterEgg("dev-mode");
