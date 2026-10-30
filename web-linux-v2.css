@@ -402,3 +402,33 @@ button:not(.window-control):hover { filter: brightness(1.1) saturate(1.05); }
 .vlc-status { display:flex;justify-content:space-between;padding-top:5px;border-top:1px solid #cbd4dc;color:#82909b;font-size:10px; }
 #vlcPlayer audio { display:none; }
 @media(max-width:650px) { .vlc-stage{flex-direction:column}.vlc-playlist{width:100%;flex:0 0 155px;border-left:0;border-top:1px solid #aab8c4}.vlc-toolbar{gap:3px}.vlc-toolbar button{width:29px}.vlc-volume{width:58px} }
+
+
+/* Web Linux 2.0 — unified Aero visual polish */
+:root { color-scheme: light; }
+body,button,input,select,textarea { font-family:"Segoe UI",Tahoma,sans-serif; }
+button,.taskbar-icon,.desktop-icon,.app-item { -webkit-tap-highlight-color:transparent; }
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible,
+.desktop-icon:focus-visible,.app-item:focus-visible {
+  outline:2px solid #5aa9e6!important;outline-offset:2px!important;
+}
+.window { overflow:hidden; }
+.window-header {
+  background:linear-gradient(180deg,#f4fbff 0%,#b8d8ef 8%,#72a9d1 45%,#3b78a8 100%)!important;
+  box-shadow:inset 0 1px rgba(255,255,255,.95),inset 0 -1px rgba(10,49,82,.45);
+}
+.window-title { font-weight:600;letter-spacing:.1px; }
+.window-content { scrollbar-color:#a8c2d6 #eaf0f5; }
+.taskbar { box-shadow:0 -1px 0 rgba(255,255,255,.45),0 -8px 24px rgba(0,22,48,.16); }
+.taskbar-icon { border:1px solid transparent; border-radius:4px; transition:background .14s,border-color .14s,transform .14s; }
+.taskbar-icon:hover { background:linear-gradient(#d9f1ff66,#68b9f466);border-color:#d8f3ff80; }
+.taskbar-icon:active { transform:translateY(1px); }
+.start-menu { backdrop-filter:blur(22px) saturate(145%); }
+.start-menu,.window { animation: aero-window-in .16s ease-out; }
+@keyframes aero-window-in { from { opacity:.78;transform:translateY(5px) scale(.992); } to { opacity:1;transform:translateY(0) scale(1); } }
+.desktop-icon { transition:background .14s,border-color .14s; }
+.desktop-icon > i { filter:drop-shadow(0 1px 2px rgba(0,0,0,.42)); }
+@media(prefers-reduced-motion:reduce) {
+  .start-menu,.window { animation:none!important; }
+  *,*::before,*::after { scroll-behavior:auto!important;transition-duration:.01ms!important; }
+}
