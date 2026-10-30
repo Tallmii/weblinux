@@ -219,3 +219,138 @@ a:hover { color: #a2d2ff; }
   visibility: hidden !important;
   pointer-events: none !important;
 }
+
+
+/* Windows 7-inspired Aero personality */
+:root {
+  --accent: #45a9f5;
+  --accent-hover: #79c4ff;
+  --accent-dark: #1769ad;
+  --bg-primary: #12243a;
+  --bg-secondary: #1b3858;
+  --glass-bg: rgba(16, 42, 70, .78);
+  --glass-border: rgba(220, 242, 255, .38);
+  --shadow-default: 0 7px 24px rgba(0, 13, 35, .28);
+  --shadow-heavy: 0 18px 52px rgba(0, 12, 34, .48);
+}
+
+/* Deep blue wallpaper with the soft luminous glow of the Aero era */
+#desktop {
+  background:
+    radial-gradient(ellipse at 73% 53%, rgba(104,190,255,.52) 0%, rgba(31,119,204,.28) 19%, transparent 44%),
+    radial-gradient(ellipse at 72% 54%, rgba(28,103,184,.42), transparent 61%),
+    linear-gradient(135deg,#071a35 0%,#123d68 47%,#06162d 100%) !important;
+}
+.wallpaper {
+  background:
+    radial-gradient(ellipse at 74% 52%, rgba(118,204,255,.48), transparent 24%),
+    radial-gradient(ellipse at 72% 50%, rgba(34,132,215,.38), transparent 48%),
+    radial-gradient(ellipse at 22% 8%, rgba(83,161,224,.22), transparent 36%),
+    linear-gradient(145deg,#071a35 0%,#164b78 52%,#07162b 100%) !important;
+}
+#desktop::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(ellipse at 75% 55%, transparent 0 18%, rgba(136,211,255,.13) 18.3% 18.6%, transparent 19% 26%, rgba(136,211,255,.09) 26.3% 26.6%, transparent 27%),
+    linear-gradient(115deg,transparent 40%,rgba(180,225,255,.055) 55%,transparent 69%);
+  mix-blend-mode: screen;
+}
+
+/* Translucent blue taskbar and luminous Start orb */
+.taskbar, .taskbar.full {
+  height: 48px !important;
+  min-height: 48px !important;
+  padding: 3px 9px !important;
+  gap: 5px !important;
+  background: linear-gradient(180deg,rgba(42,91,137,.82),rgba(9,30,56,.94)) !important;
+  border-top: 1px solid rgba(215,241,255,.72) !important;
+  box-shadow: 0 -1px 0 rgba(0,0,0,.35),0 -8px 26px rgba(0,14,34,.28) !important;
+  backdrop-filter: blur(22px) saturate(165%) !important;
+}
+.taskbar-icon {
+  min-width: 39px !important;
+  height: 38px !important;
+  border: 1px solid transparent !important;
+  border-radius: 5px !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.1) !important;
+}
+.taskbar-icon:hover {
+  background: linear-gradient(180deg,rgba(172,224,255,.36),rgba(51,139,210,.24)) !important;
+  border-color: rgba(197,232,255,.5) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.35),0 0 10px rgba(79,175,255,.24) !important;
+}
+.taskbar-icon.active, .taskbar-icon.selected {
+  background: linear-gradient(180deg,rgba(96,178,238,.42),rgba(26,93,157,.34)) !important;
+  border-color: rgba(174,222,255,.55) !important;
+}
+#taskbar > .taskbar-icon:first-child {
+  width: 46px !important;
+  min-width: 46px !important;
+  height: 42px !important;
+  margin: -2px 5px -2px -4px !important;
+  border-radius: 50% !important;
+  border: 1px solid rgba(216,247,255,.95) !important;
+  background: radial-gradient(circle at 35% 24%,#b8f4ff 0%,#55c8ed 22%,#1685c4 48%,#07508c 74%,#052d55 100%) !important;
+  box-shadow: inset 0 2px 4px rgba(255,255,255,.9),inset 0 -5px 8px rgba(0,20,55,.55),0 0 0 2px rgba(0,0,0,.38),0 0 16px rgba(80,187,255,.58) !important;
+}
+#taskbar > .taskbar-icon:first-child i {
+  font-size: 20px !important;
+  color: #f5fdff !important;
+  text-shadow: 0 1px 4px rgba(0,30,70,.9);
+}
+.taskbar-divider { border-color: rgba(220,240,255,.28) !important; }
+#clock { color: #f4faff !important; text-shadow: 0 1px 3px #00152d; }
+
+/* Aero glass Start menu, flyouts and notification surfaces */
+.start-menu, .context-menu, .quick-actions, .notification-center, .system-tray-menu, .modal {
+  background: linear-gradient(135deg,rgba(33,70,105,.94),rgba(7,25,48,.96)) !important;
+  border: 1px solid rgba(204,235,255,.48) !important;
+  border-radius: 7px !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.22),0 14px 38px rgba(0,10,28,.55) !important;
+  backdrop-filter: blur(25px) saturate(160%) !important;
+}
+.start-header { background: rgba(3,17,36,.24) !important; }
+.start-avatar, .login-avatar {
+  border: 2px solid rgba(224,244,255,.9) !important;
+  box-shadow: 0 0 0 3px rgba(20,65,104,.6),0 4px 12px rgba(0,0,0,.4) !important;
+}
+.app-item:hover, .start-menu .app-item:hover {
+  background: linear-gradient(90deg,rgba(112,190,255,.27),rgba(112,190,255,.08)) !important;
+  border-color: rgba(177,222,255,.35) !important;
+}
+
+/* Glass window frames and classic blue title bars */
+.window {
+  border: 1px solid rgba(211,239,255,.68) !important;
+  border-radius: 7px 7px 4px 4px !important;
+  background: rgba(17,43,69,.94) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.3),0 15px 42px rgba(0,9,25,.52),0 0 0 1px rgba(0,0,0,.3) !important;
+}
+.window-header {
+  min-height: 38px !important;
+  background: linear-gradient(180deg,rgba(190,226,249,.94) 0%,rgba(103,164,211,.94) 12%,rgba(40,100,153,.96) 48%,rgba(19,63,105,.98) 100%) !important;
+  border-bottom: 1px solid rgba(5,30,58,.8) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.68),inset 0 -1px 0 rgba(210,237,255,.24) !important;
+}
+.window-title { color: #fff !important; text-shadow: 0 1px 2px rgba(0,20,44,.9) !important; }
+.window-title > i { color: #d8f0ff !important; }
+.window-btn {
+  height: 25px !important;
+  border: 1px solid rgba(225,244,255,.4) !important;
+  border-radius: 3px !important;
+  background: linear-gradient(180deg,rgba(222,243,255,.28),rgba(32,84,131,.34)) !important;
+  box-shadow: inset 0 1px 0 rgba(255,255,255,.28) !important;
+}
+.window-btn:hover { background: linear-gradient(180deg,#c6ecff,#3e9bdd) !important; color:#08213b !important; }
+.window-btn.close { background: linear-gradient(180deg,#f4b5a8,#c84235) !important; color:#fff !important; }
+.window-btn.close:hover { background: linear-gradient(180deg,#ffded2,#ef4d3c) !important; }
+.window-content { background: #f3f7fb !important; color: #17283a !important; }
+
+/* Classic progress and selection accents */
+.loading-bar-container { border: 1px solid rgba(205,235,255,.55) !important; background: rgba(0,16,37,.7) !important; }
+.loading-bar { background: linear-gradient(180deg,#c9f7ff,#39a7ec 50%,#0871bd) !important; box-shadow: 0 0 12px rgba(65,180,255,.7) !important; }
+.boot-option.selected, .boot-option:hover { background: linear-gradient(90deg,rgba(105,188,255,.28),rgba(105,188,255,.08)) !important; border-color: rgba(193,230,255,.55) !important; }
+button:not(.window-control):hover { filter: brightness(1.1) saturate(1.05); }
