@@ -6146,7 +6146,7 @@ print(f'Sum: {sum(numbers)}')
             <div style="background: rgba(125, 211, 192, 0.1); border: 1px solid rgba(125, 211, 192, 0.3); border-radius: 10px; padding: 15px;">
               <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
                 <i class="fas fa-robot" style="color: var(--accent); font-size: 18px;"></i>
-                <strong style="color: var(--accent);">Nautilus AI</strong>
+                <strong style="color: var(--accent);">Web Linux AI</strong>
               </div>
               <div style="color: #cbd5e1; line-height: 1.6;">
                 Hello! I'm your Web Linux AI Assistant. I can help you understand and navigate Web Linux.<br><br>
@@ -7833,7 +7833,7 @@ function switchAppStoreSection(section, element) {
         name: "Web Linux AI Assistant",
         author: "lanefiedler-731",
         desc: "Your personal AI assistant powered by WebLLM. Get instant help with Web Linux features, apps, settings, and more. Runs entirely in your browser with no server required!",
-        customPreviewHtml: `<div class="illustration-nautilus-ai"> <div class="illustration-nautilus-ai-header"> <div class="illustration-nautilus-ai-icon"><i class="fas fa-robot"></i></div> <div class="illustration-nautilus-ai-title">Nautilus AI</div> </div> <div class="illustration-nautilus-ai-content"> <div class="illustration-nautilus-ai-msg-ai"> <div class="illustration-nautilus-ai-line" style="width: 90%;"></div> <div class="illustration-nautilus-ai-line" style="width: 60%;"></div> </div> <div class="illustration-nautilus-ai-msg-user"> <div class="illustration-nautilus-ai-line" style="width: 80%;"></div> </div> </div> </div>`,
+        customPreviewHtml: `<div class="illustration-nautilus-ai"> <div class="illustration-nautilus-ai-header"> <div class="illustration-nautilus-ai-icon"><i class="fas fa-robot"></i></div> <div class="illustration-nautilus-ai-title">Web Linux AI</div> </div> <div class="illustration-nautilus-ai-content"> <div class="illustration-nautilus-ai-msg-ai"> <div class="illustration-nautilus-ai-line" style="width: 90%;"></div> <div class="illustration-nautilus-ai-line" style="width: 60%;"></div> </div> <div class="illustration-nautilus-ai-msg-user"> <div class="illustration-nautilus-ai-line" style="width: 80%;"></div> </div> </div> </div>`,
         isInstalled: true,
         installButtonText: "Open",
         installAction: "openApp('nautilus-ai')",
@@ -16544,7 +16544,7 @@ async function initializeNautilusAI(modelKey = null) {
     }
 
   } catch (error) {
-    console.error('Failed to initialize Nautilus AI:', error);
+    console.error('Failed to initialize Web Linux AI:', error);
     nautilusAI.isInitializing = false;
     updateAiStatus(`Error: ${error.message}`, false, true);
     showToast('Failed to load AI model. Check console for details.', 'fa-exclamation-triangle');
@@ -16644,7 +16644,7 @@ async function sendAiMessage() {
     headerDiv.style.cssText = 'display: flex; align-items: center; gap: 8px; margin-bottom: 8px;';
     headerDiv.innerHTML = `
       <i class="fas fa-robot" style="color: var(--accent); font-size: 18px;"></i>
-      <strong style="color: var(--accent);">Nautilus AI</strong>
+      <strong style="color: var(--accent);">Web Linux AI</strong>
     `;
 
     const contentDiv = document.createElement('div');
@@ -16858,7 +16858,7 @@ function addAiChatMessage(message, isUser = false, isError = false) {
   headerDiv.style.cssText = 'display: flex; align-items: center; gap: 8px; margin-bottom: 8px;';
   headerDiv.innerHTML = `
     <i class="fas ${isUser ? 'fa-user' : 'fa-robot'}" style="color: ${isUser ? 'var(--accent)' : (isError ? '#ef4444' : 'var(--accent)')}; font-size: 18px;"></i>
-    <strong style="color: ${isUser ? 'var(--accent)' : (isError ? '#ef4444' : 'var(--accent)')}">${isUser ? 'You' : 'Nautilus AI'}</strong>
+    <strong style="color: ${isUser ? 'var(--accent)' : (isError ? '#ef4444' : 'var(--accent)')}">${isUser ? 'You' : 'Web Linux AI'}</strong>
   `;
 
   const contentDiv = document.createElement('div');
@@ -16891,7 +16891,7 @@ function clearAiChat() {
     <div style="background: rgba(125, 211, 192, 0.1); border: 1px solid rgba(125, 211, 192, 0.3); border-radius: 10px; padding: 15px;">
       <div style="display: flex; align-items: center; gap: 8px; margin-bottom: 8px;">
         <i class="fas fa-robot" style="color: var(--accent); font-size: 18px;"></i>
-        <strong style="color: var(--accent);">Nautilus AI</strong>
+        <strong style="color: var(--accent);">Web Linux AI</strong>
       </div>
       <div style="color: #cbd5e1; line-height: 1.6;">
         Hello! I'm your Web Linux AI Assistant. I can help you understand and navigate Web Linux.<br><br>
