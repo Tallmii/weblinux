@@ -35,7 +35,7 @@
 <body>
     <div id="bootloader">
         <div class="boot-logo"><i class="fas fa-fish"></i></div>
-        <h1 class="boot-title"><b>NAUTILUS OS</b></h1>
+        <h1 class="boot-title"><b>Web Linux</b></h1>
         <div class="boot-version">Version 2.0</div>
         <div class="boot-options" id="bootOptions">
             <div class="boot-option selected" data-index="0">
@@ -441,7 +441,7 @@
         </div>
         <div id="taskbar" class="taskbar">
             <div class="taskbar-icon" onclick="toggleStartMenu()">
-                <i class="fas fa-fish"></i>
+                <i class="fab fa-windows"></i>
             </div>
             <div class="taskbar-divider"></div>
             <div class="taskbar-icon" onclick="toggleApp('files')" title="Files" data-app="files">
@@ -477,17 +477,13 @@
                 <div class="start-avatar"><i class="fas fa-user"></i></div>
                 <div class="start-user">
                     <h3 id="displayUsername">User</h3>
-                    <p>Standard User</p>
+                    <p>Guest Session</p>
                 </div>
                 <button class="start-signout-btn"
                     onclick="window.open('https://github.com/Tallmii/weblinux', '_blank')"
                     title="GitHub Repository"
                     style="background: rgba(125, 211, 192, 0.15); border-color: rgba(125, 211, 192, 0.3); color: var(--accent);">
                     <i class="fab fa-github"></i>
-                </button>
-                <button class="start-signout-btn" onclick="signOutToLogin()" title="Sign Out"
-                    style="background: rgba(125, 211, 192, 0.15); border-color: rgba(125, 211, 192, 0.3); color: var(--accent);">
-                    <i class="fas fa-sign-out-alt"></i> <span>Sign Out</span>
                 </button>
                 <button class="start-signout-btn" onclick="signOut()" title="Shut Down">
                     <i class="fas fa-power-off"></i> <span>Shut Down</span>
