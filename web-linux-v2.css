@@ -1,0 +1,186 @@
+/* Web Linux 2.0 — Fluent desktop refresh */
+:root {
+  color-scheme: dark;
+  --accent: #2997ff;
+  --accent-hover: #55adff;
+  --accent-dark: #0874d1;
+  --bg-primary: #101722;
+  --bg-secondary: #182333;
+  --text-primary: #f4f7fb;
+  --text-secondary: #aab7c7;
+  --border: rgba(190, 210, 235, .15);
+  --glass-bg: rgba(18, 29, 44, .92);
+  --glass-border: rgba(210, 230, 255, .15);
+  --shadow-default: 0 8px 26px rgba(0, 0, 0, .28);
+  --shadow-heavy: 0 24px 70px rgba(0, 0, 0, .48);
+  --radius-panel: 14px;
+  --radius-control: 9px;
+  --ease-ui: cubic-bezier(.2,.75,.25,1);
+}
+html, body {
+  font-family: "Segoe UI Variable", "Segoe UI", Inter, system-ui, sans-serif !important;
+  background: #0d1521;
+  color: var(--text-primary);
+}
+button, input, textarea, select { font: inherit; }
+button, .button, [role="button"] { transition: background .18s var(--ease-ui), border-color .18s var(--ease-ui), transform .18s var(--ease-ui), box-shadow .18s var(--ease-ui); }
+button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible, [tabindex]:focus-visible {
+  outline: 2px solid var(--accent) !important; outline-offset: 2px;
+}
+::selection { background: rgba(41,151,255,.35); color: white; }
+::-webkit-scrollbar { width: 10px; height: 10px; }
+::-webkit-scrollbar-track { background: rgba(5,12,22,.25); }
+::-webkit-scrollbar-thumb { background: rgba(160,185,215,.28); border: 2px solid transparent; background-clip: padding-box; border-radius: 20px; }
+::-webkit-scrollbar-thumb:hover { background-color: rgba(160,185,215,.48); }
+
+/* Desktop canvas and wallpaper */
+#desktop { background: #0c1828 !important; font-family: "Segoe UI Variable","Segoe UI",system-ui,sans-serif !important; }
+.wallpaper {
+  background:
+    radial-gradient(ellipse at 72% 48%, rgba(24,132,235,.55) 0%, transparent 31%),
+    radial-gradient(ellipse at 70% 52%, rgba(13,85,160,.42) 0%, transparent 54%),
+    radial-gradient(ellipse at 18% 12%, rgba(42,105,170,.2), transparent 35%),
+    linear-gradient(135deg,#0b1421 0%,#102b49 52%,#07111f 100%) !important;
+}
+.wallpaper-icon { color: rgba(255,255,255,.045) !important; filter: blur(1px); }
+.wallpaper-text { color: rgba(255,255,255,.12) !important; letter-spacing: .16em; font-weight: 700; }
+.desktop-icons { gap: 8px !important; }
+.desktop-icon {
+  width: 88px !important; min-height: 82px; padding: 10px 6px !important;
+  border: 1px solid transparent !important; border-radius: 9px !important;
+  color: #f7faff !important; text-shadow: 0 1px 4px rgba(0,0,0,.8);
+  font-family: "Segoe UI",system-ui,sans-serif !important;
+  transition: background .16s ease,border-color .16s ease !important;
+}
+.desktop-icon > i { font-size: 27px !important; margin-bottom: 7px; filter: drop-shadow(0 3px 5px rgba(0,0,0,.35)); }
+.desktop-icon:hover, .desktop-icon:focus-visible {
+  background: rgba(116,177,235,.17) !important;
+  border-color: rgba(174,213,255,.25) !important;
+}
+
+/* Taskbar */
+.taskbar, .taskbar.full {
+  height: 54px !important; min-height: 54px !important;
+  background: rgba(13,22,34,.88) !important;
+  border-top: 1px solid rgba(210,230,255,.13) !important;
+  box-shadow: 0 -8px 30px rgba(0,0,0,.22) !important;
+  backdrop-filter: blur(24px) saturate(150%) !important;
+  padding: 0 12px !important; gap: 5px !important;
+}
+.taskbar-icon {
+  min-width: 42px !important; height: 42px !important; border-radius: 9px !important;
+  color: #dce9f8 !important; transition: background .16s ease, color .16s ease !important;
+}
+.taskbar-icon:hover { background: rgba(150,190,235,.15) !important; color: white !important; }
+.taskbar-icon.active, .taskbar-icon.selected { background: rgba(41,151,255,.22) !important; }
+.taskbar-icon i { font-size: 17px; }
+.taskbar-divider { height: 26px !important; border-color: rgba(255,255,255,.12) !important; }
+.system-tray { gap: 3px !important; }
+#clock { color: #eaf3ff !important; font-size: 12px !important; padding: 0 10px !important; }
+
+/* Start menu and flyouts */
+.start-menu {
+  background: rgba(17,28,43,.97) !important; border: 1px solid rgba(190,215,245,.18) !important;
+  border-radius: 14px !important; box-shadow: var(--shadow-heavy) !important;
+  backdrop-filter: blur(28px) saturate(145%) !important; overflow: hidden;
+}
+.start-header { border-bottom: 1px solid var(--border) !important; padding: 16px !important; }
+.start-avatar { background: linear-gradient(145deg,#2d9bff,#1766bd) !important; color: white !important; }
+.start-search input, .start-search-input {
+  background: rgba(4,12,22,.48) !important; border: 1px solid var(--border) !important;
+  border-radius: 8px !important; color: white !important;
+}
+.start-search-input:focus { border-color: var(--accent) !important; box-shadow: 0 0 0 3px rgba(41,151,255,.14) !important; }
+.app-grid { gap: 6px !important; }
+.app-item {
+  border: 1px solid transparent !important; border-radius: 9px !important;
+  padding: 12px 8px !important; transition: .16s ease !important;
+}
+.app-item:hover { background: rgba(41,151,255,.15) !important; border-color: rgba(90,170,255,.2) !important; }
+.app-item > i { color: #79bdff !important; }
+
+/* Windows and application surfaces */
+.window, .app-window, .window-container {
+  border: 1px solid rgba(190,215,245,.2) !important; border-radius: 12px !important;
+  overflow: hidden !important; box-shadow: 0 20px 55px rgba(0,0,0,.4) !important;
+  background: #152235 !important;
+}
+.window-header, .app-header, .window-titlebar {
+  min-height: 42px !important; background: rgba(25,40,60,.98) !important;
+  border-bottom: 1px solid var(--border) !important; color: #f4f8ff !important;
+}
+.window-content, .app-content {
+  background: #111d2d !important; color: var(--text-primary) !important;
+}
+.window button, .app-window button, .modal button {
+  border-radius: 8px;
+}
+.window input, .window textarea, .window select, .app-window input, .app-window textarea, .app-window select,
+.modal input, .modal textarea, .modal select {
+  border-color: rgba(170,200,235,.2) !important; border-radius: 8px !important;
+}
+.window input:focus, .window textarea:focus, .window select:focus,
+.app-window input:focus, .app-window textarea:focus, .app-window select:focus {
+  border-color: var(--accent) !important; box-shadow: 0 0 0 3px rgba(41,151,255,.13) !important; outline: none !important;
+}
+
+/* Boot, login and first-run setup */
+#bootloader, #login, #setup {
+  font-family: "Segoe UI Variable","Segoe UI",Inter,system-ui,sans-serif !important;
+}
+#bootloader {
+  background:
+    radial-gradient(ellipse at 50% 38%, rgba(30,111,190,.2), transparent 45%),
+    linear-gradient(145deg,#081321,#10243b 55%,#07111e) !important;
+}
+.boot-logo { color: #55adff !important; filter: drop-shadow(0 8px 24px rgba(41,151,255,.35)); }
+.boot-title { color: #f4f8ff !important; letter-spacing: .08em; }
+.boot-version { color: #a9c9ec !important; }
+.boot-option { border: 1px solid transparent !important; border-radius: 9px !important; }
+.boot-option.selected, .boot-option:hover { background: rgba(41,151,255,.16) !important; border-color: rgba(95,175,255,.3) !important; }
+.login-wrapper { gap: clamp(24px,5vw,80px) !important; }
+.login-info-card, .login-container {
+  background: rgba(17,30,47,.84) !important; border: 1px solid rgba(190,215,245,.17) !important;
+  border-radius: 16px !important; box-shadow: var(--shadow-heavy) !important;
+  backdrop-filter: blur(24px) !important;
+}
+.login-container { padding: clamp(28px,4vw,48px) !important; }
+.login-avatar { background: linear-gradient(145deg,#2d9bff,#1766bd) !important; color: white !important; box-shadow: 0 10px 28px rgba(25,130,230,.25); }
+.login-title { color: #f5f8ff !important; }
+.login-subtitle, .info-stat-label { color: #a9b9cc !important; }
+.login-input, #setup input:not([type=checkbox]) {
+  background: rgba(4,13,24,.52) !important; border: 1px solid rgba(170,200,235,.2) !important;
+  border-radius: 9px !important; color: white !important; padding: 13px 15px !important;
+}
+.login-input:focus, #setup input:focus { border-color: var(--accent) !important; box-shadow: 0 0 0 3px rgba(41,151,255,.14) !important; outline: none !important; }
+.login-btn {
+  background: linear-gradient(135deg,#1688ef,#0866c5) !important; border: 1px solid rgba(140,200,255,.2) !important;
+  border-radius: 9px !important; color: white !important; font-weight: 650 !important;
+  box-shadow: 0 8px 20px rgba(0,100,210,.22);
+}
+.login-btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+#setup > div[style*="background: rgba(21, 25, 35"] {
+  background: rgba(17,30,47,.94) !important; border: 1px solid var(--glass-border) !important;
+  border-radius: 16px !important; box-shadow: var(--shadow-heavy) !important;
+}
+
+/* Shared surfaces */
+.context-menu, .quick-actions, .notification-center, .system-tray-menu, .modal {
+  background: rgba(17,29,45,.97) !important; border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important; box-shadow: var(--shadow-heavy) !important; backdrop-filter: blur(24px) !important;
+}
+.toast { border: 1px solid var(--glass-border) !important; border-radius: 10px !important; box-shadow: var(--shadow-default) !important; }
+button:not(.window-control):hover { filter: brightness(1.06); }
+a { color: #72baff; }
+a:hover { color: #a2d2ff; }
+@media (max-width: 700px) {
+  .taskbar, .taskbar.full { height: 52px !important; min-height: 52px !important; padding-inline: 5px !important; }
+  .taskbar-icon { min-width: 36px !important; }
+  .login-wrapper { flex-direction: column !important; align-items: center !important; padding: 18px !important; }
+  .login-left { width: 100% !important; }
+  .login-container { width: min(100%, 440px) !important; }
+  .start-menu { max-width: calc(100vw - 16px) !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; scroll-behavior: auto !important; }
+}
