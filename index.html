@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>NautilusOS</title>
+    <title>Web Linux 2.0</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
     <link rel="stylesheet" href="v86/v86-styles.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -24,7 +24,7 @@
     <link rel="stylesheet" href="https://unpkg.com/open-props/normalize.min.css">
     <link rel="stylesheet" href="https://unpkg.com/open-props/buttons.min.css">
     <link rel="stylesheet" href="" id="themeLink">
-    <link rel="stylesheet" href="/gnome.css">
+    <link rel="stylesheet" href="/gnome.css">\n    <link rel="stylesheet" href="/web-linux-v2.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link
@@ -36,13 +36,13 @@
     <div id="bootloader">
         <div class="boot-logo"><i class="fas fa-fish"></i></div>
         <h1 class="boot-title"><b>NAUTILUS OS</b></h1>
-        <div class="boot-version">Version 1.5</div>
+        <div class="boot-version">Version 2.0</div>
         <div class="boot-options" id="bootOptions">
             <div class="boot-option selected" data-index="0">
-                <i class="fas fa-play"></i> <span>Nautilus OS</span>
+                <i class="fas fa-play"></i> <span>Web Linux</span>
             </div>
             <div class="boot-option" data-index="1">
-                <i class="fas fa-code"></i> <span>Nautilus OS (Command Line)</span>
+                <i class="fas fa-code"></i> <span>Web Linux (Command Line)</span>
             </div>
         </div>
         <div class="boot-hint">
@@ -78,11 +78,11 @@
                     <div class="info-card-content">
                         <div class="info-stat">
                             <span class="info-stat-label">OS</span>
-                            <span class="info-stat-value">NautilusOS</span>
+                            <span class="info-stat-value">Web Linux</span>
                         </div>
                         <div class="info-stat">
                             <span class="info-stat-label">Version</span>
-                            <span class="info-stat-value">1.5</span>
+                            <span class="info-stat-value">2.0</span>
                         </div>
                         <div class="info-stat">
                             <span class="info-stat-label">Browser</span>
@@ -150,7 +150,7 @@
                     <i class="fas fa-fish" style="font-size: 3rem; color: var(--bg-primary);"></i>
                 </div>
                 <h2 style="font-size: 2rem; margin-bottom: 0.5rem; color: var(--text-primary); font-family: fontb;">
-                    Welcome to NautilusOS
+                    Welcome to Web Linux
                 </h2>
                 <p style="color: var(--text-secondary); font-size: 1rem;">
                     Let's set up your account
@@ -367,13 +367,13 @@
     <div id="commandLineMode">
         <div class="cli-terminal" id="cliTerminal">
             <div class="cli-line" style="color: var(--accent);">
-                NautilusOS Command Line Interface v1.5
+                Web Linux Command Line Interface v2.0
             </div>
             <div class="cli-line" style="color: #888; margin-bottom: 1rem;">
                 Type 'help' for available commands, 'gui' to switch to graphical mode
             </div>
             <div class="cli-line">
-                <span class="cli-prompt">user@nautilusos:~$</span>
+                <span class="cli-prompt">user@web-linux:~$</span>
                 <input type="text" class="cli-input" id="cliInput" onkeypress="handleCLIInput(event)" />
             </div>
         </div>
@@ -382,7 +382,7 @@
     <div id="desktop">
         <div class="wallpaper">
             <i class="fas fa-fish wallpaper-icon"></i>
-            <div class="wallpaper-text">NautilusOS</div>
+            <div class="wallpaper-text">Web Linux</div>
             <p class="wallpaper-byline">by dinguschan</p>
         </div>
 
@@ -421,13 +421,13 @@
                 <i class="fas fa-mask"></i> <span>Cloaking</span>
             </div>
             <div class="desktop-icon" ondblclick="openApp('browser')" data-app="browser">
-                <i class="fas fa-globe"></i> <span>Nautilus Browser</span>
+                <i class="fas fa-globe"></i> <span>Web Linux Browser</span>
             </div>
             <div class="desktop-icon" ondblclick="openApp('ai-snake')" data-app="ai-snake">
                 <i class="fas fa-brain"></i> <span>AI Snake Learning</span>
             </div>
             <div class="desktop-icon" ondblclick="openApp('nautilus-ai')" data-app="nautilus-ai">
-                <i class="fas fa-robot"></i> <span>Nautilus AI Assistant</span>
+                <i class="fas fa-robot"></i> <span>Web Linux AI Assistant</span>
             </div>
             <div class="desktop-icon" ondblclick="openApp('python')" data-app="python">
                 <i class="fas fa-code"></i> <span>Python Interpreter</span>
@@ -436,7 +436,7 @@
                 <i class="fas fa-puzzle-piece"></i> <span>Web App Creator</span>
             </div>
             <div class="desktop-icon" ondblclick="openApp('about')" data-app="about">
-                <i class="fas fa-info-circle"></i> <span>About NautilusOS</span>
+                <i class="fas fa-info-circle"></i> <span>About Web Linux</span>
             </div>
         </div>
         <div id="taskbar" class="taskbar">
@@ -480,7 +480,7 @@
                     <p>Standard User</p>
                 </div>
                 <button class="start-signout-btn"
-                    onclick="window.open('https://github.com/nautilus-os/NautilusOS', '_blank')"
+                    onclick="window.open('https://github.com/nautilus-os/Web Linux', '_blank')"
                     title="GitHub Repository"
                     style="background: rgba(125, 211, 192, 0.15); border-color: rgba(125, 211, 192, 0.3); color: var(--accent);">
                     <i class="fab fa-github"></i>
@@ -505,7 +505,7 @@
                     <i class="fas fa-terminal"></i> <span>Terminal</span>
                 </div>
                 <div class="app-item" onclick="openApp('browser')">
-                    <i class="fas fa-globe"></i> <span>Nautilus Browser</span>
+                    <i class="fas fa-globe"></i> <span>Web Linux Browser</span>
                 </div>
                 <div class="app-item" onclick="openApp('settings')">
                     <i class="fas fa-cog"></i> <span>Settings</span>
@@ -538,7 +538,7 @@
                     <i class="fas fa-brain"></i> <span>AI Snake Learning</span>
                 </div>
                 <div class="app-item" onclick="openApp('nautilus-ai')">
-                    <i class="fa-solid fa-robot"></i> <span>Nautilus AI Assistant</span>
+                    <i class="fa-solid fa-robot"></i> <span>Web Linux AI Assistant</span>
                 </div>
                 <div class="app-item" onclick="openApp('python')">
                     <i class="fas fa-code"></i> <span>Python Interpreter</span>
@@ -547,7 +547,7 @@
                     <i class="fas fa-puzzle-piece"></i> <span>Web App Creator</span>
                 </div>
                 <div class="app-item" onclick="openApp('about')">
-                    <i class="fas fa-info-circle"></i> <span>About NautilusOS</span>
+                    <i class="fas fa-info-circle"></i> <span>About Web Linux</span>
                 </div>
             </div>
         </div>
