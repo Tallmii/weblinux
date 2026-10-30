@@ -432,3 +432,8 @@ button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-vis
   .start-menu,.window { animation:none!important; }
   *,*::before,*::after { scroll-behavior:auto!important;transition-duration:.01ms!important; }
 }
+
+
+/* Retired built-in apps are not shown in desktop or Start-menu launchers. */
+.desktop-icon[data-app="whatsnew"], .desktop-icon[data-app="appstore"],
+.desktop-icon[data-app="about"], .desktop-icon[data-app="python"] { display:none!important; }
