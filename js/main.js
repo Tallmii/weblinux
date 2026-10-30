@@ -1,4 +1,4 @@
-// ==================== NAUTILUS BIOS SYSTEM ====================
+// ==================== WEB LINUX BIOS SYSTEM ====================
 // Press Delete, ~, or ` during boot to enter BIOS
 (function () {
   const bootloader = document.getElementById('bootloader');
@@ -35,10 +35,10 @@
     unlockAchievement("power-user");
     // Create BIOS overlay
     const biosOverlay = document.createElement('div');
-    biosOverlay.id = 'nautilusBIOS';
+    biosOverlay.id = 'webLinuxBIOS';
     biosOverlay.innerHTML = `
       <style>
-        #nautilusBIOS {
+        #webLinuxBIOS {
           position: fixed;
           inset: 0;
           background: #0000aa;
@@ -48,7 +48,7 @@
           padding: 20px;
           overflow: auto;
         }
-        #nautilusBIOS .bios-header {
+        #webLinuxBIOS .bios-header {
           background: #aaaaaa;
           color: #0000aa;
           padding: 8px 16px;
@@ -56,48 +56,48 @@
           font-size: 18px;
           margin-bottom: 20px;
         }
-        #nautilusBIOS .bios-section {
+        #webLinuxBIOS .bios-section {
           border: 1px solid #aaaaaa;
           margin: 10px 0;
           padding: 10px;
         }
-        #nautilusBIOS .bios-section-title {
+        #webLinuxBIOS .bios-section-title {
           background: #aaaaaa;
           color: #0000aa;
           padding: 4px 8px;
           margin: -10px -10px 10px -10px;
           font-weight: bold;
         }
-        #nautilusBIOS .bios-row {
+        #webLinuxBIOS .bios-row {
           display: flex;
           justify-content: space-between;
           padding: 4px 0;
         }
-        #nautilusBIOS .bios-label {
+        #webLinuxBIOS .bios-label {
           color: #ffffff;
         }
-        #nautilusBIOS .bios-value {
+        #webLinuxBIOS .bios-value {
           color: #ffff00;
         }
-        #nautilusBIOS .bios-menu-item {
+        #webLinuxBIOS .bios-menu-item {
           padding: 6px 12px;
           cursor: pointer;
         }
-        #nautilusBIOS .bios-menu-item.selected {
+        #webLinuxBIOS .bios-menu-item.selected {
           background: #aaaaaa;
           color: #0000aa;
         }
-        #nautilusBIOS .bios-menu-item:hover:not(.selected) {
+        #webLinuxBIOS .bios-menu-item:hover:not(.selected) {
           background: #555555;
         }
-        #nautilusBIOS .bios-toggle {
+        #webLinuxBIOS .bios-toggle {
           cursor: pointer;
           padding: 4px 8px;
         }
-        #nautilusBIOS .bios-toggle:hover {
+        #webLinuxBIOS .bios-toggle:hover {
           background: #555555;
         }
-        #nautilusBIOS .bios-footer {
+        #webLinuxBIOS .bios-footer {
           position: fixed;
           bottom: 0;
           left: 0;
@@ -108,7 +108,7 @@
           display: flex;
           justify-content: space-between;
         }
-        #nautilusBIOS .bios-warning {
+        #webLinuxBIOS .bios-warning {
           color: #ff5555;
           font-weight: bold;
         }
@@ -1018,7 +1018,7 @@ const appMetadata = {
     icon: "fa-brain",
     preinstalled: true,
   },
-  "nautilus-ai": {
+  "web-linux-ai": {
     name: "Web Linux AI Assistant",
     icon: "fa-robot",
     preinstalled: true,
@@ -3928,7 +3928,7 @@ alt="favicon">
                             </div>
                             <div class="cloaking-status-text">
                                 <div class="cloaking-status-title">Screen Monitoring Detection</div>
-                                <div class="cloaking-status-desc">${cloakingConfig.antiScreenMonitoring ? "Enabled - Web Linux will black out when you switch tabs, preventing monitering software from viewing Nautilus" : "Disabled"}</div>
+                                <div class="cloaking-status-desc">${cloakingConfig.antiScreenMonitoring ? "Enabled - Web Linux will black out when you switch tabs, preventing monitering software from viewing Web Linux" : "Disabled"}</div>
                             </div>
                             <div class="toggle-switch ${cloakingConfig.antiScreenMonitoring ? "active" : ""}" id="antiScreenMonitoringToggle" onclick="toggleAntiScreenMonitoring()"></div>
                         </div>
@@ -4532,7 +4532,7 @@ alt="favicon">
                                 <div class="settings-item-title">Bypass File Protocol Warnings</div>
                                 <div class="settings-item-desc">
                                     Allow experimental browser features on file:// protocol. By enabling this, you agree to report any bugs as GitHub issues.
-                                    <a href="https://github.com/nautilus-os/Web Linux/issues" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">Report issues here</a>
+                                    <a href="https://github.com/Tallmii/weblinux/issues" target="_blank" style="color: var(--primary-blue); text-decoration: underline;">Report issues here</a>
                                 </div>
                             </div>
                             <div class="toggle-switch ${settings.bypassFileProtocolWarnings ? "active" : ""
@@ -5057,7 +5057,7 @@ alt="favicon">
     </div>
     <div class="carousel-content">
         <h2>Advanced Tab Cloaking</h2>
-        <p>Stay under the radar with powerful disguise tools! Auto-rotate through multiple tab disguises, change what blocking extensions see when you're not on Nautilus, prevent remote tab closing, configure panic keys for instant redirects, and more!</p>
+        <p>Stay under the radar with powerful disguise tools! Auto-rotate through multiple tab disguises, change what blocking extensions see when Web Linux is not active, prevent remote tab closing, configure panic keys for instant redirects, and more!</p>
     </div>
 </div>
 
@@ -5456,7 +5456,7 @@ alt="favicon">
               Made with <i class="fas fa-heart" style="color: #ef4444;"></i> by the Web Linux team
             </p>
             <div style="display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap;">
-              <a href="https://github.com/nautilus-os/Web Linux" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(125, 211, 192, 0.15); border: 1px solid rgba(125, 211, 192, 0.3); border-radius: 8px; color: var(--text-primary); text-decoration: none; font-size: 0.85rem; transition: all 0.2s ease;"
+              <a href="https://github.com/Tallmii/weblinux" target="_blank" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 0.5rem 1rem; background: rgba(125, 211, 192, 0.15); border: 1px solid rgba(125, 211, 192, 0.3); border-radius: 8px; color: var(--text-primary); text-decoration: none; font-size: 0.85rem; transition: all 0.2s ease;"
                    onmouseover="this.style.background='rgba(125, 211, 192, 0.25)'" onmouseout="this.style.background='rgba(125, 211, 192, 0.15)'">
                 <i class="fab fa-github"></i> View on GitHub
               </a>
@@ -6017,11 +6017,11 @@ print(f'Sum: {sum(numbers)}')
       width: 850,
       height: 600,
     },
-    "nautilus-ai": {
+    "web-linux-ai": {
       title: "Web Linux AI Assistant",
       icon: "fas fa-robot",
       content: `
-        <div id="nautilusAiContainer" style="display: flex; flex-direction: column; height: 100%; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
+        <div id="webLinuxAiContainer" style="display: flex; flex-direction: column; height: 100%; background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);">
           <div style="background: rgba(15, 23, 42, 0.9); border-bottom: 2px solid rgba(125, 211, 192, 0.3); padding: 15px 20px;">
             <div style="display: flex; align-items: center; gap: 10px; margin-bottom: 8px;">
               <i class="fas fa-robot" style="color: var(--accent); font-size: 24px;"></i>
@@ -6320,9 +6320,9 @@ print(f'Sum: {sum(numbers)}')
       }, 50);
     }
 
-    if (appName === "nautilus-ai") {
+    if (appName === "web-linux-ai") {
       setTimeout(() => {
-        initializeNautilusAI();
+        initializeWebLinuxAI();
       }, 50);
     }
 
@@ -7158,7 +7158,7 @@ const APP_NAMES = {
   achievements: "Achievements",
   browser: "Web Linux Browser",
   "ai-snake": "AI Snake Learning",
-  "nautilus-ai": "Web Linux AI Assistant",
+  "web-linux-ai": "Web Linux AI Assistant",
   python: "Python Interpreter",
   "web-app-creator": "Web App Creator",
   about: "About Web Linux"
@@ -7756,16 +7756,16 @@ function switchAppStoreSection(section, element) {
         name: "Web Linux AI Assistant",
         author: "lanefiedler-731",
         desc: "Your personal AI assistant powered by WebLLM. Get instant help with Web Linux features, apps, settings, and more. Runs entirely in your browser with no server required!",
-        customPreviewHtml: `<div class="illustration-nautilus-ai"> <div class="illustration-nautilus-ai-header"> <div class="illustration-nautilus-ai-icon"><i class="fas fa-robot"></i></div> <div class="illustration-nautilus-ai-title">Web Linux AI</div> </div> <div class="illustration-nautilus-ai-content"> <div class="illustration-nautilus-ai-msg-ai"> <div class="illustration-nautilus-ai-line" style="width: 90%;"></div> <div class="illustration-nautilus-ai-line" style="width: 60%;"></div> </div> <div class="illustration-nautilus-ai-msg-user"> <div class="illustration-nautilus-ai-line" style="width: 80%;"></div> </div> </div> </div>`,
+        customPreviewHtml: `<div class="illustration-web-linux-ai"> <div class="illustration-web-linux-ai-header"> <div class="illustration-web-linux-ai-icon"><i class="fas fa-robot"></i></div> <div class="illustration-web-linux-ai-title">Web Linux AI</div> </div> <div class="illustration-web-linux-ai-content"> <div class="illustration-web-linux-ai-msg-ai"> <div class="illustration-web-linux-ai-line" style="width: 90%;"></div> <div class="illustration-web-linux-ai-line" style="width: 60%;"></div> </div> <div class="illustration-web-linux-ai-msg-user"> <div class="illustration-web-linux-ai-line" style="width: 80%;"></div> </div> </div> </div>`,
         isInstalled: true,
         installButtonText: "Open",
-        installAction: "openApp('nautilus-ai')",
+        installAction: "openApp('web-linux-ai')",
         uninstallAction: "",
         type: "app"
       },
       {
         name: "Text Editor",
-        author: "dinguschan and Nautilus Labs",
+        author: "Web Linux contributors",
         desc: "A simple text editor for creating and editing text files.",
         isInstalled: installedApps.includes("editor"),
         installAction: "installApp('editor')",
@@ -7774,7 +7774,7 @@ function switchAppStoreSection(section, element) {
       },
       {
         name: "Files",
-        author: "dinguschan and Nautilus Labs",
+        author: "Web Linux contributors",
         desc: "File manager for browsing and managing your files.",
         isInstalled: installedApps.includes("files"),
         installAction: "installApp('files')",
@@ -7783,7 +7783,7 @@ function switchAppStoreSection(section, element) {
       },
       {
         name: "About Web Linux",
-        author: "dinguschan and Nautilus Labs",
+        author: "Web Linux contributors",
         desc: "Learn more about Web Linux and its features.",
         isInstalled: installedApps.includes("about"),
         installAction: "installApp('about')",
@@ -7792,7 +7792,7 @@ function switchAppStoreSection(section, element) {
       },
       {
         name: "Settings",
-        author: "dinguschan and Nautilus Labs",
+        author: "Web Linux contributors",
         desc: "Customize your Web Linux experience.",
         isInstalled: installedApps.includes("settings"),
         installAction: "installApp('settings')",
@@ -7801,7 +7801,7 @@ function switchAppStoreSection(section, element) {
       },
       {
         name: "App Store",
-        author: "dinguschan and Nautilus Labs",
+        author: "Web Linux contributors",
         desc: "Discover and install new apps and themes.",
         isInstalled: installedApps.includes("appstore"),
         installAction: "installApp('appstore')",
@@ -7810,7 +7810,7 @@ function switchAppStoreSection(section, element) {
       },
       {
         name: "Calculator",
-        author: "dinguschan and Nautilus Labs",
+        author: "Web Linux contributors",
         desc: "A simple calculator for basic math operations.",
         isInstalled: installedApps.includes("calculator"),
         installAction: "installApp('calculator')",
@@ -7819,7 +7819,7 @@ function switchAppStoreSection(section, element) {
       },
       {
         name: "Web Linux Browser",
-        author: "dinguschan and Nautilus Labs",
+        author: "Web Linux contributors",
         desc: "Browse the web with this built-in browser.",
         isInstalled: installedApps.includes("browser"),
         installAction: "installApp('browser')",
@@ -7828,7 +7828,7 @@ function switchAppStoreSection(section, element) {
       },
       {
         name: "Music",
-        author: "dinguschan and Nautilus Labs",
+        author: "Web Linux contributors",
         desc: "Play and manage your music files.",
         isInstalled: installedApps.includes("music"),
         installAction: "installApp('music')",
@@ -7837,7 +7837,7 @@ function switchAppStoreSection(section, element) {
       },
       {
         name: "Photos",
-        author: "dinguschan and Nautilus Labs",
+        author: "Web Linux contributors",
         desc: "View and manage your photos.",
         isInstalled: installedApps.includes("photos"),
         installAction: "installApp('photos')",
@@ -7846,7 +7846,7 @@ function switchAppStoreSection(section, element) {
       },
       {
         name: "Terminal",
-        author: "dinguschan and Nautilus Labs",
+        author: "Web Linux contributors",
         desc: "Command line interface for advanced users.",
         isInstalled: installedApps.includes("terminal"),
         installAction: "installApp('terminal')",
@@ -7855,7 +7855,7 @@ function switchAppStoreSection(section, element) {
       },
       {
         name: "Python Interpreter",
-        author: "dinguschan and Nautilus Labs",
+        author: "Web Linux contributors",
         desc: "Run Python code interactively.",
         isInstalled: installedApps.includes("python"),
         installAction: "installApp('python')",
@@ -7864,7 +7864,7 @@ function switchAppStoreSection(section, element) {
       },
       {
         name: "Achievements",
-        author: "dinguschan and Nautilus Labs",
+        author: "Web Linux contributors",
         desc: "Track your progress and unlock achievements.",
         isInstalled: installedApps.includes("achievements"),
         installAction: "installApp('achievements')",
@@ -10861,7 +10861,7 @@ function addDesktopIcon(appName) {
     iconConfig = { icon: "fa-microchip", label: "V86 Emulator" };
   } else if (appName === "ai-snake") {
     iconConfig = { icon: "fa-brain", label: "AI Snake Learning" };
-  } else if (appName === "nautilus-ai") {
+  } else if (appName === "web-linux-ai") {
     iconConfig = { icon: "fa-robot", label: "Web Linux AI Assistant" };
   } else {
     // Try to get from appMetadata
@@ -11471,7 +11471,7 @@ async function exportProfile() {
 
   const username = currentUsername || "user";
   const date = new Date().toISOString().split("T")[0];
-  const filename = `Web Linux_${username}_${date}.nautilusprofile`;
+  const filename = `Web Linux_${username}_${date}.weblinuxprofile`;
 
   const a = document.createElement("a");
   a.href = url;
@@ -11674,9 +11674,9 @@ async function importProfile(event) {
   const file = event.target.files[0];
   if (!file) return;
 
-  if (!file.name.endsWith(".nautilusprofile")) {
+  if (!file.name.endsWith(".weblinuxprofile")) {
     showToast(
-      "Invalid file format. Please select a .nautilusprofile file.",
+      "Invalid file format. Please select a .weblinuxprofile file.",
       "fa-exclamation-circle"
     );
     return;
@@ -12968,7 +12968,7 @@ function toggleAntiMonitorDelay() {
   if (cloakingConfig.useAntiMonitorDelay) {
     if (toggle) toggle.classList.add("active");
     if (indicator) indicator.classList.add("active");
-    if (statusDesc) statusDesc.textContent = "Enabled - After switching back to Nautilus your screen will stay black briefly for the configured delay";
+    if (statusDesc) statusDesc.textContent = "Enabled - After switching back to Web Linux your screen will stay black briefly for the configured delay";
     if (icon) {
       icon.className = "fas fa-check-circle";
     }
@@ -13589,7 +13589,7 @@ function expandHelpTopic(topicId) {
                 <h3>Information</h3>
                 <ul>
                     <li><strong>Version</strong> - Current version information</li>
-                    <li><strong>Developer</strong> - dinguschan and Nautilus Labs</li>
+                    <li><strong>Developer</strong> - Web Linux contributors</li>
                     <li><strong>Features</strong> - Complete overview of capabilities</li>
                     <li><strong>Credits</strong> - Contributors and acknowledgments</li>
                 </ul>
@@ -16066,7 +16066,7 @@ const OS_AUTOMATION_TOOLS = {
   }
 };
 
-const NAUTILUS_SYSTEM_PROMPT = `You are the Web Linux AI Assistant, an expert guide for Web Linux - a web-based operating system built entirely in HTML, CSS, and JavaScript.
+const WEB_LINUX_SYSTEM_PROMPT = `You are the Web Linux AI Assistant, an expert guide for Web Linux - a web-based operating system built entirely in HTML, CSS, and JavaScript.
 
 <i class="fa-solid fa-robot"></i> OS AUTOMATION CAPABILITIES:
 You have the ability to control and automate Web Linux! You can execute actions on behalf of the user with their approval.
@@ -16182,7 +16182,7 @@ You: "I'll open the terminal and run the date command!
 }
 </tool_call>"
 
-CORE KNOWLEDGE ABOUT NAUTILUSOS:
+CORE KNOWLEDGE ABOUT WEB LINUX:
 
 ARCHITECTURE & TECHNOLOGY:
 - Web Linux is a complete web-based OS running entirely in the browser
@@ -16366,7 +16366,7 @@ When helping users:
 
 Your goal is to make users feel confident and excited about using Web Linux!`;
 
-async function initializeNautilusAI(modelKey = null) {
+async function initializeWebLinuxAI(modelKey = null) {
   if (nautilusAI.isInitializing) return;
 
   // Allow re-initialization with different model
@@ -16452,13 +16452,13 @@ async function initializeNautilusAI(modelKey = null) {
       // Keep conversation history when switching models
       const oldMessages = nautilusAI.messages.filter(m => m.role !== 'system');
       nautilusAI.messages = [
-        { role: "system", content: NAUTILUS_SYSTEM_PROMPT },
+        { role: "system", content: WEB_LINUX_SYSTEM_PROMPT },
         ...oldMessages
       ];
     } else {
       // Fresh start
       nautilusAI.messages = [
-        { role: "system", content: NAUTILUS_SYSTEM_PROMPT }
+        { role: "system", content: WEB_LINUX_SYSTEM_PROMPT }
       ];
     }
 
@@ -16506,7 +16506,7 @@ async function switchAIModel(modelKey) {
   updateAiStatus(`Switching to ${modelConfig.label}...`, true);
 
   nautilusAI.isInitialized = false;
-  await initializeNautilusAI(modelKey);
+  await initializeWebLinuxAI(modelKey);
 }
 
 function updateAiStatus(message, loading = false, error = false) {
@@ -16541,7 +16541,7 @@ async function sendAiMessage() {
   if (!userMessage) return;
 
   if (!nautilusAI.isInitialized) {
-    await initializeNautilusAI();
+    await initializeWebLinuxAI();
     if (!nautilusAI.isInitialized) return;
   }
 
@@ -16843,7 +16843,7 @@ function clearAiChat() {
 
   // Reset conversation history (keep system prompt)
   nautilusAI.messages = [
-    { role: "system", content: NAUTILUS_SYSTEM_PROMPT }
+    { role: "system", content: WEB_LINUX_SYSTEM_PROMPT }
   ];
 
   showToast('Chat cleared', 'fa-trash');
@@ -17670,7 +17670,7 @@ function addToolFeedbackToChat(toolCall, result) {
   chatContainer.scrollTop = chatContainer.scrollHeight;
 }
 
-// Note: Initialization happens in openApp when nautilus-ai is opened
+// Note: Initialization happens in openApp when web-linux-ai is opened
 
 // Handle Enter key in textarea
 document.addEventListener('keydown', (e) => {
