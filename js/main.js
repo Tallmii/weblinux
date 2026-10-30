@@ -2018,6 +2018,52 @@ function startBootCountdown() {
   }, 1000);
 }
 
+// ========== WEB LINUX SYSTEM SOUNDS ==========
+// Original synthesized tones: no external audio files or copied Windows sounds.
+let webLinuxAudioContext = null;
+
+function getSystemAudioContext() {
+  const AudioContextClass = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContextClass) return null;
+  if (!webLinuxAudioContext) webLinuxAudioContext = new AudioContextClass();
+  if (webLinuxAudioContext.state === "suspended") webLinuxAudioContext.resume().catch(() => {});
+  return webLinuxAudioContext;
+}
+
+function playSystemTone(frequency, startAt, duration, volume = 0.035, wave = "sine") {
+  const context = getSystemAudioContext();
+  if (!context) return;
+  const oscillator = context.createOscillator();
+  const gain = context.createGain();
+  const start = context.currentTime + startAt;
+  oscillator.type = wave;
+  oscillator.frequency.setValueAtTime(frequency, start);
+  gain.gain.setValueAtTime(0.0001, start);
+  gain.gain.exponentialRampToValueAtTime(volume, start + 0.035);
+  gain.gain.exponentialRampToValueAtTime(0.0001, start + duration);
+  oscillator.connect(gain);
+  gain.connect(context.destination);
+  oscillator.start(start);
+  oscillator.stop(start + duration + 0.03);
+}
+
+function playStartupChime() {
+  // A warm, bright five-note welcome motif composed for Web Linux.
+  [[523.25,0],[659.25,0.18],[783.99,0.36],[1046.5,0.58],[783.99,0.92],[1046.5,1.12]]
+    .forEach(([frequency, time], index) => playSystemTone(frequency, time, index > 3 ? 0.72 : 0.42, 0.045));
+}
+
+function playSystemClick() {
+  playSystemTone(740, 0, 0.055, 0.012, "sine");
+}
+
+document.addEventListener("pointerdown", (event) => {
+  if (event.target.closest("button, [onclick], .boot-option, .desktop-icon, .taskbar-icon")) {
+    getSystemAudioContext();
+    playSystemClick();
+  }
+}, { passive: true });
+
 function selectBoot() {
   localStorage.setItem("nautilusOS_bootChoice", bootSelectedIndex);
 
@@ -2084,6 +2130,7 @@ function startBootSequence() {
 
       if (index === messages.length - 1) {
         console.log(`[BOOT LOG] ${new Date().toISOString()}: Boot sequence complete, hiding bootloader`);
+        playStartupChime();
         setTimeout(() => {
           const bootloader = document.getElementById("bootloader");
           bootloader.classList.add("hidden");
