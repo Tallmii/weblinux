@@ -4582,61 +4582,41 @@ alt="favicon">
       height: 600,
     },
     music: {
-      title: "Music",
-      icon: "fas fa-music",
+      title: "Web Linux Media Player",
+      icon: "fas fa-compact-disc",
       content: `
-          <div class="music-player">
-              <div class="music-header">
-                  <div class="music-artwork">
-                      <i class="fas fa-music"></i>
-                  </div>
-                  <div class="music-info">
-                      <div class="music-title" id="musicTitle">No Track Loaded</div>
-                      <div class="music-artist" id="musicArtist">Select a music file to play</div>
-                  </div>
-                  <div class="music-load-section">
-                      <label for="musicFileInput" class="music-load-btn">
-                          <i class="fas fa-folder-open"></i> Load Music
-                          <input type="file" id="musicFileInput" accept="audio/*" onchange="loadMusicFile(event)" style="display: none;">
-                      </label>
-                  </div>
-              </div>
-
-              <div class="music-progress-section">
-                  <div class="music-time" id="currentTime">0:00</div>
-                  <div class="music-progress-bar" onclick="seekMusic(event)">
-                      <div class="music-progress-fill" id="progressFill"></div>
-                  </div>
-                  <div class="music-time" id="totalTime">0:00</div>
-              </div>
-
-              <div class="music-controls">
-                  <button class="music-control-btn" onclick="restartMusic()" title="Restart">
-                      <i class="fas fa-redo"></i>
-                  </button>
-                  <button class="music-control-btn" onclick="skipBackward()" title="Skip Back 10s">
-                      <i class="fas fa-backward"></i>
-                  </button>
-                  <button class="music-control-btn play-btn" id="playPauseBtn" onclick="togglePlayPause()">
-                      <i class="fas fa-play"></i>
-                  </button>
-                  <button class="music-control-btn" onclick="skipForward()" title="Skip Forward 10s">
-                      <i class="fas fa-forward"></i>
-                  </button>
-                  <button class="music-control-btn" id="loopBtn" onclick="toggleLoop()" title="Loop">
-                      <i class="fas fa-repeat"></i>
-                  </button>
-              </div>
-
-              <div class="music-volume-section">
-                  <i class="fas fa-volume-up"></i>
-                  <input type="range" class="music-volume-slider" id="volumeSlider" min="0" max="100" value="70" oninput="changeVolume(this.value)">
-                  <span id="volumePercent">70%</span>
-              </div>
-
-              <audio id="audioPlayer" style="display: none;"></audio>
+        <div class="vlc-player" id="vlcPlayer">
+          <div class="vlc-menubar">
+            <button onclick="document.getElementById('vlcFileInput').click()">Media</button>
+            <button onclick="document.getElementById('vlcFileInput').click()">Open Files</button>
+            <button onclick="toggleVlcPlaylist()">Playlist</button>
+            <span class="vlc-brand"><i class="fas fa-compact-disc"></i> Web Linux Media Player</span>
+            <input id="vlcFileInput" type="file" accept="audio/*,video/*" multiple onchange="addMusicFiles(event)" hidden>
           </div>
-      `,
+          <div class="vlc-stage">
+            <div class="vlc-visual"><div class="vlc-disc"><i class="fas fa-music"></i></div><div class="vlc-now-title" id="musicTitle">No media playing</div><div class="vlc-now-subtitle" id="musicArtist">Open media to begin playback</div></div>
+            <aside class="vlc-playlist" id="vlcPlaylist">
+              <div class="vlc-playlist-head"><strong>Playlist</strong><span id="vlcTrackCount">0 items</span></div>
+              <div class="vlc-playlist-items" id="vlcPlaylistItems"><div class="vlc-empty">Drop audio files here or choose Open Files.</div></div>
+              <div class="vlc-playlist-actions"><button onclick="document.getElementById('vlcFileInput').click()"><i class="fas fa-plus"></i> Add</button><button onclick="clearMusicPlaylist()"><i class="fas fa-trash"></i> Clear</button></div>
+            </aside>
+          </div>
+          <div class="vlc-controls-panel">
+            <div class="vlc-seek-row"><span id="currentTime">0:00</span><input id="vlcSeek" type="range" min="0" max="1000" value="0" oninput="seekMusicSlider(this.value)"><span id="totalTime">0:00</span></div>
+            <div class="vlc-toolbar">
+              <button onclick="restartMusic()" title="Previous / Restart"><i class="fas fa-step-backward"></i></button>
+              <button onclick="skipBackward()" title="Back 10 seconds"><i class="fas fa-backward"></i></button>
+              <button class="vlc-play-button" id="playPauseBtn" onclick="togglePlayPause()" title="Play"><i class="fas fa-play"></i></button>
+              <button onclick="skipForward()" title="Forward 10 seconds"><i class="fas fa-forward"></i></button>
+              <button onclick="playNextTrack()" title="Next track"><i class="fas fa-step-forward"></i></button>
+              <button id="shuffleBtn" onclick="toggleMusicShuffle()" title="Shuffle"><i class="fas fa-random"></i></button>
+              <button id="loopBtn" onclick="toggleLoop()" title="Repeat"><i class="fas fa-repeat"></i></button>
+              <span class="vlc-toolbar-spacer"></span><i class="fas fa-volume-up"></i><input type="range" class="vlc-volume" id="volumeSlider" min="0" max="100" value="70" oninput="changeVolume(this.value)"><span id="volumePercent">70%</span>
+            </div>
+            <div class="vlc-status"><span id="vlcStatus">Ready</span><span>Local media playback</span></div>
+          </div>
+          <audio id="audioPlayer" preload="metadata"></audio>
+        </div>`,
       noPadding: true,
       width: 900,
       height: 600,
@@ -8054,142 +8034,134 @@ function handleTaskbarClick(appName) {
 }
 let audioPlayer = null;
 let currentMusicFile = null;
+let musicPlaylist = [];
+let musicCurrentIndex = -1;
+let musicShuffle = false;
+let musicRepeatMode = 0;
+let musicObjectUrls = [];
 
-function loadMusicFile(event) {
-  const file = event.target.files[0];
-  if (!file) return;
-
-  if (!file.type.startsWith("audio/")) {
-    showToast("Please select a valid audio file", "fa-exclamation-circle");
-    return;
-  }
-
+function addMusicFiles(event) {
+  const files = Array.from(event.target.files || []).filter(f => f.type.startsWith("audio/") || f.type.startsWith("video/"));
+  if (!files.length) { showToast("Choose supported audio or video files", "fa-circle-exclamation"); return; }
+  files.forEach(file => {
+    const url = URL.createObjectURL(file);
+    musicObjectUrls.push(url);
+    musicPlaylist.push({ name: file.name.replace(/\\.[^/.]+$/, ""), fileName: file.name, url });
+  });
+  renderMusicPlaylist();
+  if (musicCurrentIndex < 0) playMusicTrack(0, false);
+  event.target.value = "";
+  showToast(files.length + " media file(s) added", "fa-compact-disc");
+}
+function loadMusicFile(event) { addMusicFiles(event); }
+function escapeMusicText(value) {
+  return String(value).replace(/[&<>"']/g, c => ({ "&":"&amp;", "<":"&lt;", ">":"&gt;", '"':"&quot;", "'":"&#39;" })[c]);
+}
+function renderMusicPlaylist() {
+  const list = document.getElementById("vlcPlaylistItems");
+  if (!list) return;
+  const count = document.getElementById("vlcTrackCount");
+  if (count) count.textContent = musicPlaylist.length + (musicPlaylist.length === 1 ? " item" : " items");
+  list.innerHTML = musicPlaylist.length ? musicPlaylist.map((t,i) =>
+    '<button class="vlc-track '+(i===musicCurrentIndex?'playing':'')+'" onclick="playMusicTrack('+i+')" title="'+escapeMusicText(t.fileName)+'"><i class="fas '+(i===musicCurrentIndex?'fa-volume-high':'fa-file-audio')+'"></i><span>'+escapeMusicText(t.name)+'</span><small>'+(i+1)+'</small></button>'
+  ).join("") : '<div class="vlc-empty">Drop audio files here or choose Open Files.</div>';
+}
+function playMusicTrack(index, autoplay = true) {
+  if (index < 0 || index >= musicPlaylist.length) return;
   audioPlayer = document.getElementById("audioPlayer");
   if (!audioPlayer) return;
-
-  const url = URL.createObjectURL(file);
-  audioPlayer.src = url;
-  currentMusicFile = file.name;
-
-  const fileName = file.name.replace(/\.[^/.]+$/, "");
-  document.getElementById("musicTitle").textContent = fileName;
-  document.getElementById("musicArtist").textContent = "Local File";
-
-  audioPlayer.addEventListener("loadedmetadata", () => {
-    document.getElementById("totalTime").textContent = formatTime(
-      audioPlayer.duration
-    );
-  });
-
-  audioPlayer.addEventListener("timeupdate", updateProgress);
-  audioPlayer.addEventListener("ended", () => {
-    const playBtn = document.getElementById("playPauseBtn");
-    playBtn.innerHTML = '<i class="fas fa-play"></i>';
-  });
-
-  const volumeSlider = document.getElementById("volumeSlider");
-  audioPlayer.volume = volumeSlider.value / 100;
-
-  showToast("Music loaded: " + fileName, "fa-music");
+  musicCurrentIndex = index;
+  const track = musicPlaylist[index];
+  audioPlayer.src = track.url;
+  currentMusicFile = track.fileName;
+  const title = document.getElementById("musicTitle"), artist = document.getElementById("musicArtist");
+  if (title) title.textContent = track.name;
+  if (artist) artist.textContent = "Local media • " + track.fileName;
+  audioPlayer.volume = (document.getElementById("volumeSlider")?.value || 70) / 100;
+  audioPlayer.onloadedmetadata = () => {
+    const total = document.getElementById("totalTime");
+    if (total) total.textContent = formatTime(audioPlayer.duration);
+  };
+  audioPlayer.ontimeupdate = updateProgress;
+  audioPlayer.onended = () => {
+    if (musicRepeatMode === 2) { audioPlayer.currentTime = 0; audioPlayer.play(); }
+    else if (musicCurrentIndex < musicPlaylist.length-1 || musicShuffle) playNextTrack();
+    else if (musicRepeatMode === 1) playMusicTrack(0);
+    else updateMusicPlayButton(false);
+  };
+  renderMusicPlaylist();
+  const status = document.getElementById("vlcStatus");
+  if (status) status.textContent = "Loaded: " + track.fileName;
+  if (autoplay) audioPlayer.play().then(()=>updateMusicPlayButton(true)).catch(()=>updateMusicPlayButton(false));
+  else updateMusicPlayButton(false);
 }
-
+function updateMusicPlayButton(playing) {
+  const b=document.getElementById("playPauseBtn");
+  if (b) { b.innerHTML='<i class="fas fa-'+(playing?'pause':'play')+'"></i>'; b.title=playing?"Pause":"Play"; }
+  const st=document.getElementById("vlcStatus"); if(st && playing) st.textContent="Playing";
+}
 function togglePlayPause() {
+  audioPlayer=document.getElementById("audioPlayer");
   if (!audioPlayer || !audioPlayer.src) {
-    showToast("Please load a music file first", "fa-info-circle");
+    if(musicPlaylist.length) playMusicTrack(Math.max(0,musicCurrentIndex));
+    else showToast("Open a media file first","fa-circle-info");
     return;
   }
-
-  const playBtn = document.getElementById("playPauseBtn");
-
-  if (audioPlayer.paused) {
-    audioPlayer.play();
-    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-  } else {
-    audioPlayer.pause();
-    playBtn.innerHTML = '<i class="fas fa-play"></i>';
-  }
+  if(audioPlayer.paused) audioPlayer.play().then(()=>updateMusicPlayButton(true)).catch(()=>showToast("Playback could not start","fa-circle-exclamation"));
+  else { audioPlayer.pause(); updateMusicPlayButton(false); }
 }
-
 function updateProgress() {
-  if (!audioPlayer) return;
-
-  const progress = (audioPlayer.currentTime / audioPlayer.duration) * 100;
-  document.getElementById("progressFill").style.width = progress + "%";
-  document.getElementById("currentTime").textContent = formatTime(
-    audioPlayer.currentTime
-  );
+  if(!audioPlayer) return;
+  const duration=Number.isFinite(audioPlayer.duration)?audioPlayer.duration:0;
+  const pct=duration?audioPlayer.currentTime/duration*100:0;
+  const cur=document.getElementById("currentTime"), total=document.getElementById("totalTime"), seek=document.getElementById("vlcSeek");
+  if(cur) cur.textContent=formatTime(audioPlayer.currentTime);
+  if(total&&duration) total.textContent=formatTime(duration);
+  if(seek&&!seek.matches(":active")) seek.value=Math.round(pct*10);
 }
-
 function seekMusic(event) {
-  if (!audioPlayer || !audioPlayer.src) return;
-
-  const progressBar = event.currentTarget;
-  const rect = progressBar.getBoundingClientRect();
-  const x = event.clientX - rect.left;
-  const percentage = x / rect.width;
-  const newTime = percentage * audioPlayer.duration;
-
-  audioPlayer.currentTime = newTime;
+  if(!audioPlayer||!Number.isFinite(audioPlayer.duration)) return;
+  const r=event.currentTarget.getBoundingClientRect();
+  audioPlayer.currentTime=Math.max(0,Math.min(1,(event.clientX-r.left)/r.width))*audioPlayer.duration;
 }
-
+function seekMusicSlider(value) { if(audioPlayer&&Number.isFinite(audioPlayer.duration)) audioPlayer.currentTime=Number(value)/1000*audioPlayer.duration; }
 function changeVolume(value) {
-  if (audioPlayer) {
-    audioPlayer.volume = value / 100;
-  }
-  document.getElementById("volumePercent").textContent = value + "%";
+  if(audioPlayer) audioPlayer.volume=Number(value)/100;
+  const label=document.getElementById("volumePercent"); if(label) label.textContent=value+"%";
 }
-
-function skipForward() {
-  if (!audioPlayer || !audioPlayer.src) return;
-  audioPlayer.currentTime = Math.min(
-    audioPlayer.currentTime + 10,
-    audioPlayer.duration
-  );
-}
-
-function skipBackward() {
-  if (!audioPlayer || !audioPlayer.src) return;
-  audioPlayer.currentTime = Math.max(audioPlayer.currentTime - 10, 0);
-}
-
-function formatTime(seconds) {
-  if (isNaN(seconds)) return "0:00";
-  const mins = Math.floor(seconds / 60);
-  const secs = Math.floor(seconds % 60);
-  return mins + ":" + (secs < 10 ? "0" : "") + secs;
-}
-
+function skipForward() { if(audioPlayer&&Number.isFinite(audioPlayer.duration)) audioPlayer.currentTime=Math.min(audioPlayer.currentTime+10,audioPlayer.duration); }
+function skipBackward() { if(audioPlayer) audioPlayer.currentTime=Math.max(audioPlayer.currentTime-10,0); }
+function formatTime(seconds) { if(!Number.isFinite(seconds)) return "0:00"; const m=Math.floor(seconds/60),s=Math.floor(seconds%60); return m+":"+(s<10?"0":"")+s; }
 function restartMusic() {
-  if (!audioPlayer || !audioPlayer.src) {
-    showToast("Please load a music file first", "fa-info-circle");
-    return;
-  }
-  audioPlayer.currentTime = 0;
-  if (audioPlayer.paused) {
-    audioPlayer.play();
-    const playBtn = document.getElementById("playPauseBtn");
-    playBtn.innerHTML = '<i class="fas fa-pause"></i>';
-  }
+  if(musicCurrentIndex>0) { playMusicTrack(musicCurrentIndex-1); return; }
+  if(audioPlayer) { audioPlayer.currentTime=0; audioPlayer.play().then(()=>updateMusicPlayButton(true)).catch(()=>{}); }
 }
-
+function playNextTrack() {
+  if(!musicPlaylist.length) return;
+  let n=musicShuffle?Math.floor(Math.random()*musicPlaylist.length):(musicCurrentIndex+1)%musicPlaylist.length;
+  if(musicPlaylist.length>1&&musicShuffle&&n===musicCurrentIndex) n=(n+1)%musicPlaylist.length;
+  playMusicTrack(n);
+}
+function toggleMusicShuffle() {
+  musicShuffle=!musicShuffle;
+  document.getElementById("shuffleBtn")?.classList.toggle("active",musicShuffle);
+  showToast(musicShuffle?"Shuffle enabled":"Shuffle disabled","fa-shuffle");
+}
 function toggleLoop() {
-  if (!audioPlayer || !audioPlayer.src) {
-    showToast("Please load a music file first", "fa-info-circle");
-    return;
-  }
-
-  const loopBtn = document.getElementById("loopBtn");
-  audioPlayer.loop = !audioPlayer.loop;
-
-  if (audioPlayer.loop) {
-    loopBtn.classList.add("active");
-    showToast("Loop enabled", "fa-repeat");
-  } else {
-    loopBtn.classList.remove("active");
-    showToast("Loop disabled", "fa-repeat");
-  }
+  musicRepeatMode=(musicRepeatMode+1)%3;
+  const b=document.getElementById("loopBtn");
+  if(b) { b.classList.toggle("active",musicRepeatMode>0); b.innerHTML='<i class="fas fa-'+(musicRepeatMode===2?"repeat-1":"repeat")+'"></i>'; b.title=["Repeat off","Repeat all","Repeat one"][musicRepeatMode]; }
+  showToast(["Repeat off","Repeat playlist","Repeat current track"][musicRepeatMode],"fa-repeat");
 }
-
+function toggleVlcPlaylist() { document.getElementById("vlcPlaylist")?.classList.toggle("collapsed"); }
+function clearMusicPlaylist() {
+  if(audioPlayer) { audioPlayer.pause(); audioPlayer.removeAttribute("src"); audioPlayer.load(); }
+  musicPlaylist=[]; musicCurrentIndex=-1; musicObjectUrls.forEach(URL.revokeObjectURL); musicObjectUrls=[];
+  const title=document.getElementById("musicTitle"), artist=document.getElementById("musicArtist");
+  if(title) title.textContent="No media playing"; if(artist) artist.textContent="Open media to begin playback";
+  updateMusicPlayButton(false); renderMusicPlaylist();
+  ["currentTime","totalTime"].forEach(id=>{const el=document.getElementById(id);if(el)el.textContent="0:00";});
+}
 let browserTabs = [
   {
     id: 0,
