@@ -354,3 +354,51 @@ a:hover { color: #a2d2ff; }
 .loading-bar { background: linear-gradient(180deg,#c9f7ff,#39a7ec 50%,#0871bd) !important; box-shadow: 0 0 12px rgba(65,180,255,.7) !important; }
 .boot-option.selected, .boot-option:hover { background: linear-gradient(90deg,rgba(105,188,255,.28),rgba(105,188,255,.08)) !important; border-color: rgba(193,230,255,.55) !important; }
 button:not(.window-control):hover { filter: brightness(1.1) saturate(1.05); }
+
+/* Aero-era icon palette and Windows 7-inspired surfaces */
+.wallpaper-icon { color:rgba(255,255,255,.045)!important; }
+.desktop-icon { width:92px!important;min-height:84px!important;border-radius:3px!important;color:#fff!important;text-shadow:1px 1px 2px #10243b,0 0 5px #10243b!important; }
+.desktop-icon>i { font-size:31px!important;margin-bottom:7px!important;color:#eaf7ff!important;filter:drop-shadow(0 2px 2px #0008)!important; }
+.desktop-icon[data-app="files"]>i { color:#ffd45c!important; }
+.desktop-icon[data-app="music"]>i { color:#ff963b!important; }
+.desktop-icon[data-app="browser"]>i { color:#66d2ff!important; }
+.desktop-icon:hover { background:rgba(115,190,245,.22)!important;border:1px solid rgba(202,235,255,.4)!important; }
+.start-menu { border-radius:7px!important;background:linear-gradient(115deg,rgba(244,249,253,.98),rgba(211,229,242,.98) 48%,rgba(239,246,251,.98))!important;border:1px solid #fff!important;color:#1b2e40!important;box-shadow:0 10px 35px #0008,inset 0 0 0 1px #417daa33!important; }
+.start-user h3,.start-user p { color:#203b54!important;text-shadow:none!important; }
+.start-search input,.start-search-input { background:#fff!important;color:#20364b!important;border:1px solid #9db8ce!important;border-radius:2px!important; }
+.app-item { color:#20364b!important;border-radius:3px!important; }
+.app-item>i { color:#2879b8!important; }
+.app-item:hover { background:linear-gradient(90deg,#d6ebfa,#b8dcf4)!important;border-color:#8bb8d9!important; }
+.window { border:1px solid rgba(232,248,255,.9)!important;border-radius:7px 7px 3px 3px!important;background:#eaf2f8!important;box-shadow:0 14px 36px #00142d7a,inset 0 0 0 1px #ffffff80!important; }
+.window-header { min-height:36px!important;background:linear-gradient(180deg,#d7edfc 0%,#8ab9dd 10%,#4c91c3 48%,#28679d 100%)!important;border-bottom:1px solid #1a4c75!important; }
+.window-title { color:#fff!important;text-shadow:0 1px 2px #17436a!important; }
+.window-content { background:#f3f7fa!important;color:#203346!important; }
+
+/* VLC-inspired local media player */
+.vlc-player { display:flex;flex-direction:column;height:100%;min-height:440px;background:#f1f1f1;color:#1d2730;font:13px "Segoe UI",Tahoma,sans-serif; }
+.vlc-menubar { display:flex;align-items:center;gap:2px;padding:5px 8px;background:linear-gradient(#fff,#e7edf2);border-bottom:1px solid #c4cdd5; }
+.vlc-menubar button,.vlc-playlist-actions button { border:1px solid transparent;background:transparent;color:#273746;padding:5px 9px;border-radius:3px;cursor:pointer; }
+.vlc-menubar button:hover,.vlc-playlist-actions button:hover { background:linear-gradient(#fff,#dceaf5);border-color:#9ebbd1; }
+.vlc-brand { margin-left:auto;color:#607487;font-size:11px; }.vlc-brand i { color:#ed8a25;font-size:16px;margin-right:5px; }
+.vlc-stage { display:flex;flex:1;min-height:260px;overflow:hidden;background:#15191d; }
+.vlc-visual { flex:1;min-width:0;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;padding:24px;background:radial-gradient(ellipse at center,#343c43,#171b20 70%);color:#f2f5f8; }
+.vlc-disc { width:116px;height:116px;display:grid;place-items:center;border-radius:50%;color:#ff9a35;font-size:38px;background:radial-gradient(circle,#343a40 0 12%,#111 13% 15%,#292e33 16% 48%,#0b0d0f 49% 54%,#242a30 55% 100%);border:3px solid #59636b;box-shadow:0 9px 24px #0009,inset 0 0 0 4px #161a1e; }
+.vlc-now-title { max-width:100%;font-size:17px;font-weight:600;text-align:center;overflow-wrap:anywhere; }.vlc-now-subtitle { max-width:100%;color:#aebbc6;text-align:center;overflow-wrap:anywhere; }
+.vlc-playlist { width:275px;flex:0 0 275px;display:flex;flex-direction:column;background:#f6f8fa;color:#263746;border-left:1px solid #aab8c4;transition:width .2s,flex-basis .2s; }
+.vlc-playlist.collapsed { width:0;flex-basis:0;border:0;overflow:hidden; }
+.vlc-playlist-head { display:flex;justify-content:space-between;padding:10px 11px;background:linear-gradient(#fff,#e6edf2);border-bottom:1px solid #c4cdd5; }.vlc-playlist-head span { color:#778896;font-size:11px; }
+.vlc-playlist-items { flex:1;overflow:auto;padding:5px; }
+.vlc-track { display:flex;align-items:center;width:100%;gap:8px;padding:8px;text-align:left;border:1px solid transparent;background:transparent;color:#263746;border-radius:3px;cursor:pointer; }
+.vlc-track span { flex:1;overflow:hidden;white-space:nowrap;text-overflow:ellipsis; }.vlc-track small { color:#7d8d99; }.vlc-track>i { color:#d77d23; }
+.vlc-track:hover { background:#e5f1fa;border-color:#b4d1e5; }.vlc-track.playing { background:#d3eafa;border-color:#8db9d8;color:#174c75; }
+.vlc-empty { padding:20px 10px;color:#778896;line-height:1.5;text-align:center; }.vlc-playlist-actions { display:flex;padding:5px;border-top:1px solid #cbd4dc; }
+.vlc-controls-panel { padding:9px 12px 5px;background:linear-gradient(#fafcfd,#e3e9ee);border-top:1px solid #fff; }
+.vlc-seek-row { display:flex;align-items:center;gap:9px;color:#566674;font-size:11px;font-variant-numeric:tabular-nums; }.vlc-seek-row input { flex:1;accent-color:#438bc0; }
+.vlc-toolbar { display:flex;align-items:center;justify-content:center;gap:6px;padding:9px 0 5px;color:#566674; }
+.vlc-toolbar button { width:33px;height:30px;border:1px solid #b8c5cf;border-radius:4px;background:linear-gradient(#fff,#dce5ec);color:#3b566b;box-shadow:inset 0 1px #fff;cursor:pointer; }
+.vlc-toolbar button:hover,.vlc-toolbar button.active { background:linear-gradient(#eaf7ff,#bcdcf1);border-color:#75a9ce;color:#155b8e; }
+.vlc-toolbar .vlc-play-button { width:42px;height:36px;border-radius:5px;color:#fff;border-color:#3976a4;background:linear-gradient(#83b9df,#347fb4);font-size:16px; }
+.vlc-toolbar-spacer { flex:1; }.vlc-volume { width:90px;accent-color:#438bc0; }
+.vlc-status { display:flex;justify-content:space-between;padding-top:5px;border-top:1px solid #cbd4dc;color:#82909b;font-size:10px; }
+#vlcPlayer audio { display:none; }
+@media(max-width:650px) { .vlc-stage{flex-direction:column}.vlc-playlist{width:100%;flex:0 0 155px;border-left:0;border-top:1px solid #aab8c4}.vlc-toolbar{gap:3px}.vlc-toolbar button{width:29px}.vlc-volume{width:58px} }
