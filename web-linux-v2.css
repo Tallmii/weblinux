@@ -210,3 +210,12 @@ a:hover { color: #a2d2ff; }
 .window-btn.close:hover { background:#d83b45 !important; color:#fff !important; }
 .window-content { background:#111d2d !important; color:#eef4fc !important; }
 .window-content.has-padding { padding:18px !important; }
+
+
+/* Account creation and sign-in were removed in Web Linux 2.0. */
+#login,
+#setup {
+  display: none !important;
+  visibility: hidden !important;
+  pointer-events: none !important;
+}
