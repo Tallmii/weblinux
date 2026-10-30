@@ -3,7 +3,7 @@
 ## Web Linux
 
 Web Linux is a web-based operating system built entirely in HTML, CSS, and JS.
-Boot it up, log in, and mess around like it’s a real desktop with proxies, games, apps, an app store, windows, a file explorer, taskbar, and more.
+Boot it up and use it like a real desktop with proxies, games, apps, an app store, windows, a file explorer, taskbar, and more.
 
 NAUTILUS BLOCKED BY YOUR SCHOOL?? DOWNLOAD "index.html" from the Web Linux-OneFile folder! Open up index.html and you'll have (most*) of Web Linux's features!
 
@@ -41,9 +41,9 @@ You can also deploy Web Linux in a Github Codespace:
 
 There’s a ton of stuff to play with, but here’s a quick rundown (seriously, check them all out yourself):
 
-- bootloader and login screen
+- bootloader with automatic guest desktop session
 - advanced cloaking options not seen in other proxies
-- allows creation of multiple accounts with different editable  permissions (superuser or standard users)
+- single guest session with no account or password setup
 - THREE built in proxy browsers, all using different technologies
 - tons of themes to customize Nautilus to your preference
 - fully animated desktop environment
@@ -53,7 +53,7 @@ There’s a ton of stuff to play with, but here’s a quick rundown (seriously, 
 - built in screenshotting, media viewing, music playing and more
 - taskbar to keep your apps organized
 - custom right-click menu to quickly perform tasks within Nautilus
-- searchable start menu with user info and apps grid  
+- searchable start menu with apps grid  
 - a multitude of preinstalled apps + an app store to discover more
 - tons of customization and settings
 - exportable/importable profiles
