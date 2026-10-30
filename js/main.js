@@ -3189,7 +3189,7 @@ function openFile(filename) {
       // Check if it's a Python file
       if (filename.endsWith(".py")) {
         currentFile = filename;
-        openApp("python", item, filename);
+        openApp("editor", item, filename);
       } else {
         if (!installedApps.includes("editor")) {
           showToast("Text editor app required to open this file type", "fa-exclamation-triangle");
@@ -18421,3 +18421,14 @@ document.addEventListener('contextmenu', (e) => {
 // Init new features
 enableDesktopSelection();
 updateTaskbarStyle();
+
+
+// Retired built-in apps: block stale shortcuts and saved startup entries.
+const _openAppWithoutRetiredApps = openApp;
+openApp = function(appName, ...args) {
+  if (["appstore", "whatsnew", "about", "python"].includes(appName)) {
+    if (typeof showToast === "function") showToast("This app is no longer included in Web Linux.", "fa-info-circle");
+    return;
+  }
+  return _openAppWithoutRetiredApps(appName, ...args);
+};
